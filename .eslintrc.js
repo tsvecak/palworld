@@ -14,8 +14,8 @@ module.exports = {
   ],
   rules: {
     indent: ['error', 2, { SwitchCase: 1 }],
-    "react/jsx-indent": ["error", 4],
-    'no-unused-vars': 'on',
+    'react/jsx-indent': ['error', 2],
+    'no-unused-vars': 1,
     'no-console': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/no-unescaped-entities': 'off',

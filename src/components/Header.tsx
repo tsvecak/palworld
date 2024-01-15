@@ -1,5 +1,4 @@
 'use client';
-import { containerClass } from '@/components/Container';
 import { Dialog, Disclosure, Popover } from '@headlessui/react';
 import {
   ChevronDownIcon,
@@ -15,8 +14,11 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+
+import { containerClass } from '@/components/Container';
 
 const products = [
   {
@@ -74,7 +76,11 @@ const Header = () => {
             <picture className="h-8 w-auto">
               <source srcSet="images/logo.webp" type="image/webp" />
               <source srcSet="images/logo.png" type="image/png" />
-              <img src="images/logo.png" style={{ height: 'inherit' }} />
+              <img
+                src="images/logo.png"
+                style={{ height: 'inherit' }}
+                alt="palworld logo"
+              />
             </picture>
           </a>
         </div>
@@ -115,10 +121,11 @@ const Header = () => {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
+              <Image
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
+                src="images/logo.png"
+                style={{ height: 'inherit' }}
+                alt="palworld logo"
               />
             </a>
             <button

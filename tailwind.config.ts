@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       dropShadow: {
-        'new': '0px 6px 5px rgba(0,0,0, 0.5)',
+        new: '0px 6px 5px rgba(0,0,0, 0.5)',
       },
       fontFamily: {
         primary: ['Inter', ...defaultTheme.fontFamily.sans],

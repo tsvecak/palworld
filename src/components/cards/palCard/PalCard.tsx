@@ -1,6 +1,10 @@
-import addLeadingZeros from '@/lib/addLeadingZero';
-import { Pal } from '@/types/pal';
 import Link from 'next/link';
+
+import addLeadingZeros from '@/lib/addLeadingZero';
+
+import CoverImage from '@/components/cards/palCard/CoverImage';
+
+import { Pal } from '@/types/pal';
 
 const PalCard = ({ pal }: { pal: Pal }) => {
   const coverUrl = pal.attributes.cover?.data?.attributes?.url;
@@ -25,23 +29,7 @@ const PalCard = ({ pal }: { pal: Pal }) => {
         className={wrapperClass}
         style={bgColor2 ? gradientBg : { backgroundColor: bgColor1 }}
       >
-        <img
-          className={
-            coverUrl
-              ? 'absolute -top-14 left-1/2 h-40 w-auto -translate-x-1/2'
-              : 'absolute left-1/2 w-7/12'
-          }
-          src={coverImage}
-          alt="Sunset in the mountains"
-          style={
-            !coverUrl
-              ? {
-                  top: '40%',
-                  transform: 'translate(-50%, -50%)',
-                }
-              : {}
-          }
-        />
+        <CoverImage imageUrl={coverImage} isModel={!!coverUrl} />
         <div className="drop-shadow-new mx-auto grid w-10/12 grid-cols-2 justify-between self-center rounded-lg bg-purple-900 p-2 px-6 text-sm">
           <div className="font-bold">
             #{addLeadingZeros(pal.attributes.number, 3)}

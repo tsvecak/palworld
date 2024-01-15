@@ -1,6 +1,7 @@
 import getPals from '@/lib/getPals';
 
-import PalCard from '@/components/cards/PalCard';
+import PalCard from '@/components/cards/palCard/PalCard';
+
 import { Pal } from '@/types/pal';
 
 async function getData() {
@@ -13,8 +14,8 @@ export default async function HomePage() {
 
   return (
     <main>
-      <section className='bg-white'>
-        <div className='layout relative flex min-h-screen flex-col py-12 text-left'>
+      <section className="bg-white">
+        <div className="layout relative flex min-h-screen flex-col py-12 text-left">
           {data?.map((p) => (
             <PalCard key={p.id} pal={p} />
           ))}

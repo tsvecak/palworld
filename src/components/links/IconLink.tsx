@@ -40,7 +40,7 @@ const IconLink = React.forwardRef<HTMLAnchorElement, IconLinkProps>(
     return (
       <UnstyledLink
         ref={ref}
-        type='button'
+        type="button"
         className={cn(
           'inline-flex items-center justify-center rounded font-medium',
           'focus-visible:ring-primary-500 focus:outline-none focus-visible:ring',
@@ -88,7 +88,7 @@ const IconLink = React.forwardRef<HTMLAnchorElement, IconLinkProps>(
         )}
         {...rest}
       >
-        {Icon && <Icon size='1em' className={cn(classNames?.icon)} />}
+        {Icon && <Icon size="1em" className={cn(classNames?.icon)} />}
       </UnstyledLink>
     );
   }

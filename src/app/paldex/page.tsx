@@ -1,7 +1,8 @@
 import getPals from '@/lib/getPals';
 
+import PalCard from '@/components/cards/palCard/PalCard';
 import { containerClass } from '@/components/Container';
-import PalCard from '@/components/cards/PalCard';
+
 import { Pal } from '@/types/pal';
 
 async function getData() {

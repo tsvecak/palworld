@@ -1,6 +1,8 @@
-import getPal from '@/lib/getPal';
-import { Pal } from '@/types/pal';
 import Link from 'next/link';
+
+import getPal from '@/lib/getPal';
+
+import { Pal } from '@/types/pal';
 
 async function getData(slug: string): Promise<{ data: Array<Pal> }> {
   const res = await getPal(slug);
@@ -17,10 +19,10 @@ export default async function SinglePalPage({
   return (
     <main>
       <header>
-        <Link href='/paldex'>Back to Paldex</Link>
+        <Link href="/paldex">Back to Paldex</Link>
       </header>
-      <section className='bg-white'>
-        <div className='layout relative flex min-h-screen flex-col py-12 text-left'>
+      <section className="bg-white">
+        <div className="layout relative flex min-h-screen flex-col py-12 text-left">
           <h1>{currentPal.attributes.name}</h1>#{currentPal.attributes.number} -{' '}
           {currentPal.attributes.name}
         </div>

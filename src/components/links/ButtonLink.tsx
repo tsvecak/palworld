@@ -107,7 +107,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             ])}
           >
             <LeftIcon
-              size='1em'
+              size="1em"
               className={cn(
                 [
                   size === 'base' && 'md:text-md text-md',
@@ -127,7 +127,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             ])}
           >
             <RightIcon
-              size='1em'
+              size="1em"
               className={cn(
                 [
                   size === 'base' && 'text-md md:text-md',

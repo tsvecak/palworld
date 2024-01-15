@@ -4,6 +4,7 @@ import * as React from 'react';
 import '@/styles/globals.css';
 
 import Header from '@/components/Header';
+
 import { siteConfig } from '@/constant/config';
 
 export const metadata: Metadata = {

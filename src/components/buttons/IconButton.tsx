@@ -42,7 +42,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     return (
       <button
         ref={ref}
-        type='button'
+        type="button"
         disabled={disabled}
         className={cn(
           'inline-flex items-center justify-center rounded font-medium',
@@ -104,10 +104,10 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
               }
             )}
           >
-            <ImSpinner2 className='animate-spin' />
+            <ImSpinner2 className="animate-spin" />
           </div>
         )}
-        {Icon && <Icon size='1em' className={cn(classNames?.icon)} />}
+        {Icon && <Icon size="1em" className={cn(classNames?.icon)} />}
       </button>
     );
   }

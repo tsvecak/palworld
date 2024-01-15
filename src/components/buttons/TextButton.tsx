@@ -22,7 +22,7 @@ const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
     return (
       <button
         ref={ref}
-        type='button'
+        type="button"
         disabled={buttonDisabled}
         className={cn(
           'button inline-flex items-center justify-center font-semibold',
