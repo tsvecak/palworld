@@ -10,13 +10,14 @@ async function getData() {
   return res;
 }
 export default async function HomePage() {
-  const { data }: { data: Array<Pal> } = await getData();
+  const data: { data: Array<Pal> } = await getData();
+  const palsList = data ? data.data : [];
 
   return (
     <main>
       <section className="bg-white">
         <div className="layout relative flex min-h-screen flex-col py-12 text-left">
-          {data?.map((p) => (
+          {palsList?.map((p) => (
             <PalCard key={p.id} pal={p} />
           ))}
         </div>
