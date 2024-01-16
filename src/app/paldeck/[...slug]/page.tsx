@@ -53,7 +53,9 @@ export default async function SinglePalPage({
           <h1>{currentPal.attributes.name}</h1>#{currentPal.attributes.number}
           <ModelImage imageUrl={modelImage} isModel={!!modelUrl} />
           {currentPal.attributes.caption}
-          <BlocksRenderer content={currentPal.attributes.description} />
+          {currentPal.attributes.description && (
+            <BlocksRenderer content={currentPal.attributes.description} />
+          )}
         </div>
       </section>
     </main>
