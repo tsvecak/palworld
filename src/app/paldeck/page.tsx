@@ -16,7 +16,6 @@ export default async function Paldeck() {
   return (
     <main>
       <section className={`${containerClass} flex-col`}>
-        <h1>Paldeck</h1>
         <div className="layout relative grid grid-cols-2 gap-x-2 gap-y-6 py-12 text-left lg:grid-cols-4">
           {palsList?.map((p) => (
             <PalCard key={p.id} pal={p} />
