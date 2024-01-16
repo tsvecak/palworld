@@ -6,7 +6,7 @@ import '@/styles/globals.css';
 import Header from '@/components/Header';
 
 import { siteConfig } from '@/constant/config';
-
+// TODO: Fix OG Images
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -18,13 +18,13 @@ export const metadata: Metadata = {
   icons: {
     icon: '/images/favicon.png',
   },
-  manifest: `/favicon/site.webmanifest`,
+  // manifest: `/favicon/site.webmanifest`,
   openGraph: {
     url: siteConfig.url,
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.title,
-    images: [`${siteConfig.url}/images/og.jpg`],
+    // images: [`${siteConfig.url}/images/og.jpg`],
     type: 'website',
     locale: 'en_US',
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/images/og.jpg`],
+    // images: [`${siteConfig.url}/images/og.jpg`],
   },
 };
 

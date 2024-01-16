@@ -1,4 +1,5 @@
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { Metadata } from 'next';
 import Link from 'next/link';
 
 import getPal from '@/lib/getPal';
@@ -13,6 +14,25 @@ async function getData(slug: string): Promise<{ data: Array<Pal> }> {
 
   return res;
 }
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { data } = await getData(params.slug);
+  const currentPal = data[0];
+
+  const modelUrl = currentPal.attributes.model?.data?.attributes?.url;
+  const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
+  return {
+    title: currentPal.attributes.name,
+    openGraph: {
+      images: [modelImage],
+    },
+  };
+}
+
 export default async function SinglePalPage({
   params,
 }: {
