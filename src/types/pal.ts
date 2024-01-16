@@ -38,6 +38,7 @@ export type Pal = {
     elements: {
       data: Array<{
         attributes: {
+          name: string;
           color: string;
           icon: {
             data: {

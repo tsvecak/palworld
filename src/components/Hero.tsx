@@ -28,7 +28,8 @@ export default function Hero() {
             Fan made Paldeck
           </h1>
           <p className="mt-6 text-lg leading-8 text-white">
-            Best place to get all the Palworld information
+            This page is still in progress and some of the info might not be
+            100% correct. This will be corrected as we get access to the game.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Link

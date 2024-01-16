@@ -7,6 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function isLocal(url: string) {
-  const notProd = process.env.NODE_ENV !== 'production';
+  let notProd = process.env.NODE_ENV !== 'production';
+  if(url.includes('cloudinary')) notProd = false
   return notProd ? process.env.STRAPI_URL + url : url;
 };

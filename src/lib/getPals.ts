@@ -2,7 +2,7 @@ const getPals = async (query?: string, noCache?: boolean) => {
   return fetch(
     `${process.env.STRAPI_URL}/api/pals?${
       query ? `&${query}` : ''
-    }&pagination[page]=1&pagination[pageSize]=200`,
+    }&pagination[page]=1&pagination[pageSize]=200&sort=number`,
     {
       headers: {
         'Content-Type': 'application/json',
