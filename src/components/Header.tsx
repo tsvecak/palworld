@@ -72,8 +72,8 @@ const Header = () => {
       >
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <picture className="h-8 w-auto">
+            <span>Paldeck</span>
+            {/* <picture className="h-8 w-auto">
               <source srcSet="images/logo.webp" type="image/webp" />
               <source srcSet="images/logo.png" type="image/png" />
               <img
@@ -81,7 +81,7 @@ const Header = () => {
                 style={{ height: 'inherit' }}
                 alt="palworld logo"
               />
-            </picture>
+            </picture> */}
           </a>
         </div>
         <div className="flex lg:hidden">
