@@ -1,25 +1,21 @@
-import getPals from '@/lib/getPals';
+import { getRandomPalData } from '@/lib/getPals';
 
 import PalCard from '@/components/cards/palCard/PalCard';
+import { containerClass } from '@/components/Container';
+import Hero from '@/components/Hero';
 
-import { Pal } from '@/types/pal';
-
-async function getData() {
-  const res = await getPals();
-
-  return res;
-}
 export default async function HomePage() {
-  const data: { data: Array<Pal> } = await getData();
-  const palsList = data ? data.data : [];
+  const data = await getRandomPalData();
 
   return (
     <main>
-      <section className="bg-white">
-        <div className="layout relative flex min-h-screen flex-col py-12 text-left">
-          {palsList?.map((p) => (
-            <PalCard key={p.id} pal={p} />
-          ))}
+      <Hero />
+      <section className={`${containerClass} flex-col`}>
+        <div className="w-60">
+          <h3>Pal Spotlight</h3>
+          <div className="mt-12 w-60 max-w-full">
+            <PalCard pal={data} />
+          </div>
         </div>
       </section>
     </main>

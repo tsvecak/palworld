@@ -102,10 +102,10 @@ const Header = () => {
             Home
           </Link>
           <Link
-            href="/paldex"
+            href="/paldeck"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
-            Paldex
+            Paldeck
           </Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end"> </div>

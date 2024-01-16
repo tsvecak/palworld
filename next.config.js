@@ -8,11 +8,20 @@ const nextConfig = {
   swcMinify: true,
 
   // Uncoment to add domain whitelist
-  // images: {
-  //   domains: [
-  //     'res.cloudinary.com',
-  //   ],
-  // },
+  images: {
+    domains: [
+      'res.cloudinary.com',
+      '127.0.0.1'
+    ],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "",
+        pathname: "/uploads/**",
+      },
+    ],
+  },
 
   webpack(config) {
     // Grab the existing rule that handles SVG imports

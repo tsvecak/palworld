@@ -16,4 +16,11 @@ const getPals = async (query?: string) => {
     .catch((errors) => console.log(errors));
 };
 
+export async function getRandomPalData() {
+  const res = await getPals();
+  const palsList = res.data;
+  const item = palsList[Math.floor(Math.random() * palsList.length)];
+  return item;
+}
+
 export default getPals;

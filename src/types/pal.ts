@@ -1,3 +1,5 @@
+import { RootNode } from "@strapi/blocks-react-renderer/dist/BlocksRenderer";
+
 export type Pal = {
   id: number;
   attributes: {
@@ -8,7 +10,9 @@ export type Pal = {
     publishedAt: string;
     locale: string;
     number: number;
-    cover: {
+    caption: string;
+    description: RootNode[];
+    model: {
       data: {
         id: number;
         attributes: {
@@ -37,9 +41,12 @@ export type Pal = {
           color: string;
           icon: {
             data: {
+              id: number;
               attributes: {
                 id: number;
                 url: string;
+                name: string;
+                slug: string;
               };
             };
           };

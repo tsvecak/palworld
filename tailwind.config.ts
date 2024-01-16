@@ -48,10 +48,21 @@ export default {
             backgroundPosition: '700px 0',
           },
         },
+        gradient: {
+          '0%, 100%': {
+            'background-size': '400% 400%',
+            'background-position': 'center top',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'center center',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
+        gradient: 'gradient 3s infinite',
       },
     },
   },

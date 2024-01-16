@@ -5,3 +5,8 @@ import { twMerge } from 'tailwind-merge';
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export function isLocal(url: string) {
+  const notProd = process.env.NODE_ENV !== 'production';
+  return notProd ? process.env.STRAPI_URL + url : url;
+};

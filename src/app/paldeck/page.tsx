@@ -10,14 +10,14 @@ async function getData() {
 
   return res;
 }
-export default async function Paldex() {
+export default async function Paldeck() {
   const data: { data: Array<Pal> } = await getData();
   const palsList = data ? data.data : [];
   return (
     <main>
       <section className={`${containerClass} flex-col`}>
-        <h1>Paldex</h1>
-        <div className="layout relative grid min-h-screen grid-cols-2 gap-2 py-12 text-left lg:grid-cols-4">
+        <h1>Paldeck</h1>
+        <div className="layout relative grid grid-cols-2 gap-x-2 gap-y-6 py-12 text-left lg:grid-cols-4">
           {palsList?.map((p) => (
             <PalCard key={p.id} pal={p} />
           ))}
