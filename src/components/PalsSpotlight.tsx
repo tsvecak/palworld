@@ -9,7 +9,7 @@ const PalsSpotlight = async () => {
   return (
     <div className="w-full">
       <h3>Pals Spotlight</h3>
-      <div className="mt-12 grid w-full max-w-full grid-cols-3 gap-2">
+      <div className="mt-12 grid w-full max-w-full grid-cols-1 gap-2 sm:grid-cols-3">
         {data.map((pal: Pal) => (
           <PalCard key={pal.id} pal={pal} />
         ))}

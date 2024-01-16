@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
-import { containerClass } from '@/components/Container';
+import Container from '@/components/Container';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
 export default function Hero() {
   return (
     <div
-      className="w-100 relative isolate flex h-screen max-h-screen flex-col justify-between"
+      className="w-100 background-pattern relative isolate flex h-screen max-h-screen flex-col justify-between"
       style={{
         backgroundImage: 'url(/images/palworld-large.jpg)',
         backgroundSize: 'cover',
@@ -14,8 +14,8 @@ export default function Hero() {
         height: 'calc(100vh - 72px)',
       }}
     >
-      <div className="px-6 pt-14 lg:px-8">
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+      <div className="mx-auto flex h-full items-center px-6 pt-14 lg:px-8">
+        <div className="mx-auto max-w-2xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
               Fan made Paldeck
@@ -42,12 +42,10 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <section
-        className={`${containerClass} w-full flex-col bg-slate-400/[.6]`}
-      >
+      <Container customClass="w-full bg-slate-400/[.6]">
         {/* @ts-expect-error Server Component */}
         <PalsSpotlight />
-      </section>
+      </Container>
     </div>
   );
 }
