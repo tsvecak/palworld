@@ -1,3 +1,5 @@
+import { revalidatePath } from 'next/cache';
+
 import { getRandomPalData } from '@/lib/getPals';
 
 import PalCard from '@/components/cards/palCard/PalCard';
@@ -5,7 +7,8 @@ import { containerClass } from '@/components/Container';
 import Hero from '@/components/Hero';
 
 export default async function HomePage() {
-  const data = await getRandomPalData();
+  revalidatePath('/');
+  const data = await getRandomPalData({ noCache: true });
 
   return (
     <main>

@@ -1,4 +1,4 @@
-const getPals = async (query?: string) => {
+const getPals = async (query?: string, noCache?: boolean) => {
   return fetch(
     `${process.env.STRAPI_URL}/api/pals?${
       query ? `&${query}` : ''
@@ -8,7 +8,7 @@ const getPals = async (query?: string) => {
         'Content-Type': 'application/json',
       },
       method: 'GET',
-      next: { revalidate: 1000 },
+      cache: noCache ? 'no-store' : 'default'
     }
   )
     .then((response) => response.json())
@@ -16,8 +16,8 @@ const getPals = async (query?: string) => {
     .catch((errors) => console.log(errors));
 };
 
-export async function getRandomPalData() {
-  const res = await getPals();
+export async function getRandomPalData({noCache}: {noCache:boolean}) {
+  const res = await getPals('',noCache);
   const palsList = res.data;
   const item = palsList[Math.floor(Math.random() * palsList.length)];
   return item;

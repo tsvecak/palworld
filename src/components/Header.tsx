@@ -65,7 +65,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white drop-shadow-md">
+    <header className="relative sticky top-0 z-50 bg-white drop-shadow-md">
       <nav
         className={`${containerClass} items-center justify-between`}
         aria-label="Global"

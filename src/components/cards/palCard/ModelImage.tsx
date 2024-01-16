@@ -32,7 +32,7 @@ const CoverImage = ({
       alt="Sunset in the mountains"
       style={styles}
       width={200}
-      height={180}
+      height={isModel ? 180 : 40}
     />
   );
 };
