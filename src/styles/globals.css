@@ -115,3 +115,8 @@
     background-size: 0 2px, 100% 2px;
   }
 }
+
+#headlessui-portal-root {
+  position: relative;
+  z-index: 1001;
+}

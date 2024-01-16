@@ -16,11 +16,20 @@ const getPals = async (query?: string, noCache?: boolean) => {
     .catch((errors) => console.log(errors));
 };
 
-export async function getRandomPalData({noCache}: {noCache:boolean}) {
+export async function getRandomPal({noCache}: {noCache:boolean}) {
   const res = await getPals('',noCache);
   const palsList = res.data;
   const item = palsList[Math.floor(Math.random() * palsList.length)];
   return item;
+}
+export async function getRandomPals({noCache, noOfPals = 4}: {noCache:boolean, noOfPals?: number}) {
+  const res = await getPals('',noCache);
+  const palsList = res.data;
+  const shuffled = palsList.sort(() => 0.5 - Math.random());
+
+  const selected = shuffled.slice(0, noOfPals);
+
+  return selected;
 }
 
 export default getPals;
