@@ -56,6 +56,7 @@ export default async function SinglePalPage({
   const itemsDrops = currentPal.attributes.items_drops?.data;
   const workSuitabilities = currentPal.attributes.work_suitabilities?.data;
   const partnerSkills = currentPal.attributes.partner_skills?.data;
+  console.log(currentPal.attributes);
   return (
     <main
       style={{ height: 'calc(100vh - 72px)' }}
