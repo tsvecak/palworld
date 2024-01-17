@@ -100,11 +100,11 @@ export default async function SinglePalPage({
               <Blob color1={bgColor1} color2={bgColor2} />
             </div>
           </div>
-          <div className="relative z-0 col-span-10">
-            {currentPal.attributes.description && (
+          {currentPal.attributes.description && (
+            <div className="relative z-0 col-span-10">
               <BlocksRenderer content={currentPal.attributes.description} />
-            )}
-          </div>
+            </div>
+          )}
           <div className="relative z-0 col-span-10 flex flex-col">
             {itemsDrops?.length > 0 && (
               <div className="my-2">
