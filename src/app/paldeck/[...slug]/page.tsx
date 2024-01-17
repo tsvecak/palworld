@@ -53,6 +53,9 @@ export default async function SinglePalPage({
   const bgColor2 =
     elements?.length === 2 ? elements?.[1]?.attributes.color : '';
 
+  const itemsDrops = currentPal.attributes.items_drops?.data;
+  const workSuitabilities = currentPal.attributes.work_suitabilities?.data;
+  const partnerSkills = currentPal.attributes.partner_skills?.data;
   return (
     <main
       style={{ height: 'calc(100vh - 72px)' }}
@@ -77,6 +80,30 @@ export default async function SinglePalPage({
             <div>
               {currentPal.attributes.description && (
                 <BlocksRenderer content={currentPal.attributes.description} />
+              )}
+              {itemsDrops?.length > 0 && (
+                <div className="my-2">
+                  <h4>Possible Drops:</h4>
+                  {itemsDrops?.map(
+                    (i) => `${i.attributes.name} - ${i.attributes.description}`
+                  )}
+                </div>
+              )}
+              {workSuitabilities?.length > 0 && (
+                <div className="my-2">
+                  <h4>Work Suitability:</h4>
+                  {workSuitabilities?.map(
+                    (i) => `${i.attributes.name} - ${i.attributes.description}`
+                  )}
+                </div>
+              )}
+              {partnerSkills?.length > 0 && (
+                <div className="my-2">
+                  <h4>Partner Skill:</h4>
+                  {partnerSkills?.map(
+                    (i) => `${i.attributes.name} - ${i.attributes.description}`
+                  )}
+                </div>
               )}
               <div style={{ width: '140px' }}>
                 {currentPal.attributes.elements?.data.map((e) => (
