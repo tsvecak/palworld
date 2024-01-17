@@ -20,13 +20,13 @@ const features = [
 ];
 
 export default function FeaturesSection() {
-  const videoref = useRef();
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { ref, inView } = useInView({
     threshold: 0,
   });
   useEffect(() => {
-    if (inView === true) {
-      videoref?.current?.play();
+    if (inView === true && videoRef?.current) {
+      videoRef.current.play();
     }
   });
 
@@ -58,11 +58,14 @@ export default function FeaturesSection() {
               </dl>
             </div>
           </div>
-          <div className="flex items-center">
+          <div
+            ref={ref}
+            className="background-pattern relative flex items-center"
+          >
             <video
               src="/videos/palworld_showcase.mp4"
-              ref={videoref}
-              className=" w-full max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 md:-ml-4 lg:-ml-0"
+              ref={videoRef}
+              className=" w-full max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10"
               width={500}
               height={400}
               autoPlay={true}
