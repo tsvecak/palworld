@@ -61,7 +61,7 @@ export default async function SinglePalPage({
       style={{ height: 'calc(100vh - 72px)' }}
       className="flex flex-col justify-between"
     >
-      <section className="h-3/5 bg-white">
+      <section className="mb-4 h-full bg-white">
         <div className="layout relative py-2 text-left">
           <Link
             href="/paldeck"
@@ -70,62 +70,66 @@ export default async function SinglePalPage({
             {`< `}Back to Paldeck
           </Link>
         </div>
-        <div className="layout grid-col relative grid h-full grid-cols-10 justify-center py-4 text-left">
-          <div className="col-span-3 flex flex-col justify-between">
-            <div className="z-10">
+        <div className="layout grid-col relative grid h-full grid-cols-10 justify-center gap-y-4 py-4 text-left">
+          <div className="col-span-10 grid grid-cols-5 flex-col justify-between">
+            <div className="z-10 col-span-2">
               #{addLeadingZeros(currentPal.attributes.number, 3)}
               <h1>{currentPal.attributes.name}</h1>
-              <p className="mb-2">{currentPal.attributes.caption}</p>
-            </div>
-            <div>
-              {currentPal.attributes.description && (
-                <BlocksRenderer content={currentPal.attributes.description} />
-              )}
-              {itemsDrops?.length > 0 && (
-                <div className="my-2">
-                  <h4>Possible Drops:</h4>
-                  {itemsDrops?.map(
-                    (i) => `${i.attributes.name} - ${i.attributes.description}`
-                  )}
-                </div>
-              )}
-              {workSuitabilities?.length > 0 && (
-                <div className="my-2">
-                  <h4>Work Suitability:</h4>
-                  {workSuitabilities?.map(
-                    (i) => `${i.attributes.name} - ${i.attributes.description}`
-                  )}
-                </div>
-              )}
-              {partnerSkills?.length > 0 && (
-                <div className="my-2">
-                  <h4>Partner Skill:</h4>
-                  {partnerSkills?.map(
-                    (i) => `${i.attributes.name} - ${i.attributes.description}`
-                  )}
-                </div>
-              )}
+              <p className="mb-2 text-xs italic">
+                {currentPal.attributes.caption}
+              </p>
               <div style={{ width: '140px' }}>
                 {currentPal.attributes.elements?.data.map((e) => (
                   <Element key={e.id} element={e} displayName={true} />
                 ))}
               </div>
             </div>
+            <div className="relative z-0 col-span-3 flex items-center justify-start">
+              <Image
+                className="w-auto transition-all group-hover:scale-110"
+                src={modelImage}
+                alt="Sunset in the mountains"
+                style={{
+                  height: modelUrl ? '200px' : '50px',
+                  width: 'auto',
+                  margin: '0 auto',
+                }}
+                width={200}
+                height={180}
+              />
+              <Blob color1={bgColor1} color2={bgColor2} />
+            </div>
           </div>
-          <div className="relative z-0 col-span-7 flex items-center justify-center">
-            <Image
-              className="w-auto transition-all group-hover:scale-110"
-              src={modelImage}
-              alt="Sunset in the mountains"
-              style={{
-                height: modelUrl ? '150px' : '50px',
-                width: 'auto',
-                margin: '0 auto',
-              }}
-              width={200}
-              height={180}
-            />
-            <Blob color1={bgColor1} color2={bgColor2} />
+          <div className="relative z-0 col-span-10">
+            {currentPal.attributes.description && (
+              <BlocksRenderer content={currentPal.attributes.description} />
+            )}
+          </div>
+          <div className="relative z-0 col-span-10 flex flex-col">
+            {itemsDrops?.length > 0 && (
+              <div className="my-2">
+                <h4>Possible Drops:</h4>
+                {itemsDrops?.map(
+                  (i) => `${i.attributes.name} - ${i.attributes.description}`
+                )}
+              </div>
+            )}
+            {workSuitabilities?.length > 0 && (
+              <div className="my-2">
+                <h4>Work Suitability:</h4>
+                {workSuitabilities?.map(
+                  (i) => `${i.attributes.name} - ${i.attributes.description}`
+                )}
+              </div>
+            )}
+            {partnerSkills?.length > 0 && (
+              <div className="my-2">
+                <h4>Partner Skill:</h4>
+                {partnerSkills?.map(
+                  (i) => `${i.attributes.name} - ${i.attributes.description}`
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>
