@@ -6,7 +6,7 @@ import PalsSpotlight from '@/components/PalsSpotlight';
 export default function Hero() {
   return (
     <div
-      className="w-100 background-pattern relative isolate flex h-screen max-h-screen flex-col justify-between"
+      className="w-100 background-pattern relative isolate flex h-screen max-h-screen flex-col justify-between pb-2"
       style={{
         backgroundImage: 'url(/images/palworld-large.jpg)',
         backgroundSize: 'cover',
@@ -42,7 +42,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <Container customClass="w-full bg-slate-400/[.6]">
+      <Container customClass="w-full  bg-slate-400/[.6]">
         {/* @ts-expect-error Server Component */}
         <PalsSpotlight />
       </Container>

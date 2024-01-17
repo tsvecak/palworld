@@ -62,7 +62,7 @@ export default async function SinglePalPage({
       style={{ height: 'calc(100vh - 72px)' }}
       className="flex flex-col justify-between"
     >
-      <section className="mb-4 h-full bg-white">
+      <section className="mb-4 h-auto bg-white">
         <div className="layout relative py-2 text-left">
           <Link
             href="/paldeck"
@@ -134,8 +134,8 @@ export default async function SinglePalPage({
           </div>
         </div>
       </section>
-      <Container customClass="w-full bg-slate-400/[.6] max-w-full">
-        <Container customClass="w-full max-w-full py-0">
+      <Container customClass="w-full bg-slate-400/[.6] max-w-full p-2 md:p-0">
+        <Container customClass="layout max-w-full py-2 px-0 lg:px-0">
           {/* @ts-expect-error Server Component */}
           <PalsSpotlight />
         </Container>
