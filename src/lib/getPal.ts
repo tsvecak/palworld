@@ -1,4 +1,4 @@
-const getPal = async (slug: string) => {
+const getPal = async (slug: string, noCache?: boolean) => {
   return fetch(
     `${process.env.STRAPI_URL}/api/pals?filters[slug][$eq]=${slug}`,
     {
@@ -6,6 +6,7 @@ const getPal = async (slug: string) => {
         'Content-Type': 'application/json',
       },
       method: 'GET',
+      cache: noCache ? 'no-store' : 'default'
     }
   )
     .then((response) => response.json())
