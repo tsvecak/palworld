@@ -6,6 +6,8 @@ import getPal from '@/lib/getPal';
 import { isLocal } from '@/lib/utils';
 
 import ModelImage from '@/components/cards/palCard/ModelImage';
+import Container from '@/components/Container';
+import PalsSpotlight from '@/components/PalsSpotlight';
 
 import { Pal } from '@/types/pal';
 
@@ -46,7 +48,7 @@ export default async function SinglePalPage({
   return (
     <main>
       <section className="bg-white">
-        <div className="layout relative flex min-h-screen flex-col py-12 text-left">
+        <div className="layout relative flex flex-col py-12 text-left">
           <Link href="/paldeck" className=" underline underline-offset-2">
             {`< `}Back to Paldeck
           </Link>
@@ -56,8 +58,15 @@ export default async function SinglePalPage({
           {currentPal.attributes.description && (
             <BlocksRenderer content={currentPal.attributes.description} />
           )}
+          {currentPal.attributes.elements?.data.map((e) => e.attributes.name)}
         </div>
       </section>
+      <Container customClass="w-full bg-slate-400/[.6] max-w-full">
+        <Container customClass="w-full max-w-full py-0">
+          {/* @ts-expect-error Server Component */}
+          <PalsSpotlight />
+        </Container>
+      </Container>
     </main>
   );
 }

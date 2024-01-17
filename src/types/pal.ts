@@ -36,23 +36,25 @@ export type Pal = {
       };
     };
     elements: {
-      data: Array<{
-        attributes: {
-          name: string;
-          color: string;
-          icon: {
-            data: {
-              id: number;
-              attributes: {
-                id: number;
-                url: string;
-                name: string;
-                slug: string;
-              };
-            };
-          };
-        };
-      }>;
+      data: Array<PalElement>;
     };
   };
 };
+
+export type PalElement = {
+  attributes: {
+    name: string;
+    color: string;
+    icon: {
+      data: {
+        id: number;
+        attributes: {
+          id: number;
+          url: string;
+          name: string;
+          slug: string;
+        };
+      };
+    };
+  };
+}

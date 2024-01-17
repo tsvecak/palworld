@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import addLeadingZeros from '@/lib/addLeadingZero';
 import { isLocal } from '@/lib/utils';
 
 import ModelImage from '@/components/cards/palCard/ModelImage';
+import Element from '@/components/Element';
 
 import { Pal } from '@/types/pal';
 const PalCard = ({ pal }: { pal: Pal }) => {
@@ -40,26 +40,7 @@ const PalCard = ({ pal }: { pal: Pal }) => {
         <div className="absolute left-0 top-0 grid grid-cols-1 px-2 pt-2">
           {elements?.map((e) => {
             const icon = e.attributes.icon;
-            return (
-              <span
-                key={icon.data.id}
-                className="mb-2 mr-2 flex w-[32px] items-center gap-2 rounded-full border-2 bg-white px-1 py-1 text-center text-sm font-semibold leading-none text-black transition-all duration-500 hover:w-auto"
-              >
-                <Image
-                  src={isLocal(icon.data.attributes.url)}
-                  alt={icon.data.attributes.name}
-                  width={20}
-                  height={20}
-                />
-                <div
-                  className="w-0 overflow-hidden transition-all group-hover:w-full"
-                  style={{ lineHeight: 1 }}
-                >
-                  {e.attributes.name}
-                </div>
-                {/* TODO: add hover effect to show name */}
-              </span>
-            );
+            return <Element element={e} key={icon.data.id} />;
           })}
         </div>
       </div>
