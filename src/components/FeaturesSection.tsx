@@ -1,0 +1,76 @@
+'use client';
+import { useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
+const features = [
+  {
+    name: 'Monster taming',
+    description:
+      "Palworld is home to over 100 unique Pals, each equipped with a diverse set of skills to enhance the player's adventure.",
+  },
+  {
+    name: 'Action-RPG',
+    description:
+      'Players wield a range of weapons, from classic bows and spears to modern assault rifles and rocket launchers.',
+  },
+  {
+    name: 'Base building',
+    description:
+      'Players can enjoy the experience of constructing bases alongside their Pals.',
+  },
+];
+
+export default function FeaturesSection() {
+  const videoref = useRef();
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+  useEffect(() => {
+    if (inView === true) {
+      videoref?.current?.play();
+    }
+  });
+
+  return (
+    <div className="overflow-hidden bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+          <div className="lg:pr-8 lg:pt-4">
+            <div className="lg:max-w-lg">
+              <h2 className="text-base font-semibold leading-7 text-indigo-600">
+                Palworld
+              </h2>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Features
+              </p>
+              <p className="mt-6 text-lg leading-8 text-gray-600">
+                Palworld seamlessly integrates elements of battle,
+                monster-capturing, training, and base building.
+              </p>
+              <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                {features.map((feature) => (
+                  <div key={feature.name} className="relative">
+                    <dt className="inline font-semibold text-gray-900">
+                      {feature.name}
+                    </dt>{' '}
+                    <dd className="inline">{feature.description}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <video
+              src="/videos/palworld_showcase.mp4"
+              ref={videoref}
+              className=" w-full max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 md:-ml-4 lg:-ml-0"
+              width={500}
+              height={400}
+              autoPlay={true}
+              muted
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
