@@ -110,25 +110,52 @@ export default async function SinglePalPage({
             {itemsDrops?.length > 0 && (
               <div className="my-2">
                 <h4>Possible Drops:</h4>
-                {itemsDrops?.map(
-                  (i) => `${i.attributes.name} - ${i.attributes.description}`
-                )}
+                {itemsDrops?.map((i) => {
+                  const name = i.attributes.name;
+                  const description = i.attributes.description
+                    ? ` - ${i.attributes.description}`
+                    : '';
+                  return (
+                    <div key={`itemsDrops${name}`}>
+                      {name}
+                      {description}
+                    </div>
+                  );
+                })}
               </div>
             )}
             {workSuitabilities?.length > 0 && (
               <div className="my-2">
                 <h4>Work Suitability:</h4>
-                {workSuitabilities?.map(
-                  (i) => `${i.attributes.name} - ${i.attributes.description}`
-                )}
+                {workSuitabilities?.map((i) => {
+                  const name = i.attributes.name;
+                  const description = i.attributes.description
+                    ? ` - ${i.attributes.description}`
+                    : '';
+                  return (
+                    <div key={`workSuitabilities${name}`}>
+                      {name}
+                      {description}
+                    </div>
+                  );
+                })}
               </div>
             )}
             {partnerSkills?.length > 0 && (
               <div className="my-2">
                 <h4>Partner Skill:</h4>
-                {partnerSkills?.map(
-                  (i) => `${i.attributes.name} - ${i.attributes.description}`
-                )}
+                {partnerSkills?.map((i) => {
+                  const name = i.attributes.name;
+                  const description = i.attributes.description
+                    ? ` - ${i.attributes.description}`
+                    : '';
+                  return (
+                    <div key={`partnerSkills${name}`}>
+                      {name}
+                      {description}
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
