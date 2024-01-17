@@ -42,6 +42,7 @@ export type Pal = {
 };
 
 export type PalElement = {
+  id: number;
   attributes: {
     name: string;
     color: string;
