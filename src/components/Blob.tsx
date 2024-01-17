@@ -18,7 +18,7 @@ const Blob = ({ color1, color2 }: { color1?: string; color2?: string }) => {
       }}
     >
       <defs>
-        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id="gradient" x1="40%" y1="40%" x2="30%" y2="100%">
           <stop offset="0%" style={{ stopColor: color1 || '#81C3D7' }}></stop>
           <stop offset="100%" style={{ stopColor: color2 || '#8499F0' }}></stop>
         </linearGradient>

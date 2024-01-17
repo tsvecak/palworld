@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import addLeadingZeros from '@/lib/addLeadingZero';
 import getPal from '@/lib/getPal';
 import { isLocal } from '@/lib/utils';
 
@@ -53,22 +54,44 @@ export default async function SinglePalPage({
     elements?.length === 2 ? elements?.[1]?.attributes.color : '';
 
   return (
-    <main>
-      <section className="bg-white">
-        <div className="layout relative flex flex-col py-12 text-left">
-          <div className="z-10">
-            <Link href="/paldeck" className=" underline underline-offset-2">
-              {`< `}Back to Paldeck
-            </Link>
-            <h1>{currentPal.attributes.name}</h1>#{currentPal.attributes.number}
+    <main
+      style={{ height: 'calc(100vh - 72px)' }}
+      className="flex flex-col justify-between"
+    >
+      <section className="h-3/5 bg-white">
+        <div className="layout relative py-2 text-left">
+          <Link
+            href="/paldeck"
+            className="mb-auto underline underline-offset-2"
+          >
+            {`< `}Back to Paldeck
+          </Link>
+        </div>
+        <div className="layout grid-col relative grid h-full grid-cols-10 justify-center py-4 text-left">
+          <div className="col-span-3 flex flex-col justify-between">
+            <div className="z-10">
+              #{addLeadingZeros(currentPal.attributes.number, 3)}
+              <h1>{currentPal.attributes.name}</h1>
+              <p className="mb-2">{currentPal.attributes.caption}</p>
+            </div>
+            <div>
+              {currentPal.attributes.description && (
+                <BlocksRenderer content={currentPal.attributes.description} />
+              )}
+              <div style={{ width: '140px' }}>
+                {currentPal.attributes.elements?.data.map((e) => (
+                  <Element key={e.id} element={e} displayName={true} />
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="relative z-0">
+          <div className="relative z-0 col-span-7 flex items-center justify-center">
             <Image
               className="w-auto transition-all group-hover:scale-110"
               src={modelImage}
               alt="Sunset in the mountains"
               style={{
-                height: '150px',
+                height: modelUrl ? '150px' : '50px',
                 width: 'auto',
                 margin: '0 auto',
               }}
@@ -76,15 +99,6 @@ export default async function SinglePalPage({
               height={180}
             />
             <Blob color1={bgColor1} color2={bgColor2} />
-          </div>
-          {currentPal.attributes.caption}
-          {currentPal.attributes.description && (
-            <BlocksRenderer content={currentPal.attributes.description} />
-          )}
-          <div style={{ width: '140px' }}>
-            {currentPal.attributes.elements?.data.map((e) => (
-              <Element key={e.id} element={e} displayName={true} />
-            ))}
           </div>
         </div>
       </section>
