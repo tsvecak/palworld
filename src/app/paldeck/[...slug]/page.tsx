@@ -46,17 +46,17 @@ export default async function SinglePalPage({
 }) {
   const data: Array<Pal> = await getData(params.slug);
   const currentPal = data?.[0];
-  const modelUrl = currentPal.attributes.model?.data?.attributes?.url;
+  const modelUrl = currentPal?.attributes?.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
-  const elements = currentPal.attributes.elements?.data;
+  const elements = currentPal?.attributes?.elements?.data;
   const firstElement = elements?.[0];
   const bgColor1 = firstElement ? firstElement.attributes.color : '';
   const bgColor2 =
     elements?.length === 2 ? elements?.[1]?.attributes.color : '';
 
-  const itemsDrops = currentPal.attributes.items_drops?.data;
-  const workSuitabilities = currentPal.attributes.work_suitabilities?.data;
-  const partnerSkills = currentPal.attributes.partner_skills?.data;
+  const itemsDrops = currentPal?.attributes?.items_drops?.data;
+  const workSuitabilities = currentPal?.attributes?.work_suitabilities?.data;
+  const partnerSkills = currentPal?.attributes?.partner_skills?.data;
 
   return (
     <main
@@ -74,14 +74,14 @@ export default async function SinglePalPage({
         </div>
         <div className="layout grid-col relative grid justify-center gap-y-4 py-2 text-left sm:grid-cols-2 sm:py-10">
           <div className="z-10 col-span-2 sm:col-span-1">
-            #{addLeadingZeros(currentPal.attributes.number, 3)}
-            <h1>{currentPal.attributes.name}</h1>
+            #{addLeadingZeros(currentPal?.attributes?.number, 3)}
+            <h1>{currentPal?.attributes?.name}</h1>
             <p className="mb-2 text-xs italic">
-              {currentPal.attributes.caption}
+              {currentPal?.attributes?.caption}
             </p>
-            {currentPal.attributes.description && (
+            {currentPal?.attributes?.description && (
               <div className="relative z-0 col-span-10 mb-4">
-                <BlocksRenderer content={currentPal.attributes.description} />
+                <BlocksRenderer content={currentPal?.attributes?.description} />
               </div>
             )}
             <div className="flex flex-wrap">
