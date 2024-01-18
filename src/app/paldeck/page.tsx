@@ -11,8 +11,8 @@ async function getData() {
   return res;
 }
 export default async function Paldeck() {
-  const data: { data: Array<Pal> } = await getData();
-  const palsList = data ? data.data : [];
+  const data: Array<Pal> = await getData();
+  const palsList = data ? data : [];
   return (
     <main>
       <Container customClass="w-full">

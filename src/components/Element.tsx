@@ -14,7 +14,9 @@ const Element = ({
 }) => {
   const icon = element.attributes.icon;
   let wrapperClass = clsx(
-    'mb-2 mr-2 flex items-center gap-2 rounded-full border-2 bg-white px-1 py-1 text-center text-sm font-semibold leading-none text-black transition-all duration-500 hover:w-auto'
+    `mb-2 mr-2 flex items-center gap-2 rounded-full border-2 bg-white px-1 py-1 text-center text-sm font-semibold text-black hover:w-auto hover:pr-3 ${
+      displayName ? 'pr-3' : ''
+    }`
   );
   let elemClass = 'overflow-hidden transition-all';
   if (!displayName) {
@@ -26,13 +28,10 @@ const Element = ({
       <Image
         src={isLocal(icon.data.attributes.url)}
         alt={icon.data.attributes.name}
-        width={20}
-        height={20}
+        width={24}
+        height={24}
       />
-      <div
-        className={elemClass}
-        style={{ lineHeight: 1, width: '100%', textAlign: 'left' }}
-      >
+      <div className={elemClass} style={{ width: '100%', textAlign: 'left' }}>
         {element.attributes.name}
       </div>
     </span>

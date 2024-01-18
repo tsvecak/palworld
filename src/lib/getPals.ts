@@ -2,7 +2,7 @@ const getPals = async (query?: string, noCache?: boolean) => {
   return fetch(
     `${process.env.STRAPI_URL}/api/pals?${
       query ? `&${query}` : ''
-    }&pagination[page]=1&pagination[pageSize]=200&sort=number`,
+    }&pagination[page]=1&pagination[pageSize]=200`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -18,13 +18,13 @@ const getPals = async (query?: string, noCache?: boolean) => {
 
 export async function getRandomPal({noCache}: {noCache:boolean}) {
   const res = await getPals('',noCache);
-  const palsList = res.data;
+  const palsList = res;
   const item = palsList[Math.floor(Math.random() * palsList.length)];
   return item;
 }
 export async function getRandomPals({noCache, noOfPals = 4}: {noCache:boolean, noOfPals?: number}) {
   const res = await getPals('',noCache);
-  const palsList = res.data;
+  const palsList = res;
   const shuffled = palsList.sort(() => 0.5 - Math.random());
 
   const selected = shuffled.slice(0, noOfPals);
