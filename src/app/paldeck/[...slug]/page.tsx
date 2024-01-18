@@ -12,7 +12,7 @@ import Container from '@/components/Container';
 
 import { Pal } from '@/types/pal';
 
-async function getData(slug: string): Promise<Array<Pal>> {
+async function getData(slug: string): Promise<{ data: Array<Pal> }> {
   const res = await getPal(slug);
 
   return res;
@@ -23,7 +23,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const data = await getData(params.slug);
+  const { data } = await getData(params.slug);
   const currentPal = data?.[0];
 
   const modelUrl = currentPal?.attributes?.model?.data?.attributes?.url;
@@ -41,8 +41,9 @@ export default async function SinglePalPage({
 }: {
   params: { slug: string };
 }) {
-  const data: Array<Pal> = await getData(params.slug);
+  const { data }: { data: Array<Pal> } = await getData(params.slug);
   const currentPal = data?.[0];
+  console.log(data, currentPal);
   const modelUrl = currentPal?.attributes?.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
   const elements = currentPal?.attributes?.elements?.data;
