@@ -24,7 +24,7 @@ export async function getRandomPal({noCache}: {noCache:boolean}) {
 }
 export async function getRandomPals({noCache, noOfPals = 4}: {noCache:boolean, noOfPals?: number}) {
   const res = await getPals('',noCache);
-  const palsList = res;
+  const palsList = res.data;
   const shuffled = palsList.sort(() => 0.5 - Math.random());
 
   const selected = shuffled.slice(0, noOfPals);
