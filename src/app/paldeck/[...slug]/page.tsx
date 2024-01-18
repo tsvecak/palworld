@@ -9,6 +9,9 @@ import { isLocal } from '@/lib/utils';
 
 import Blob from '@/components/Blob';
 import Container from '@/components/Container';
+import Element from '@/components/Element';
+import IconNameDescription from '@/components/IconNameDescription';
+import PalsSpotlight from '@/components/PalsSpotlight';
 
 import { Pal } from '@/types/pal';
 
@@ -24,12 +27,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { data } = await getData(params.slug);
-  const currentPal = data?.[0];
+  const currentPal = data[0];
 
-  const modelUrl = currentPal?.attributes?.model?.data?.attributes?.url;
+  const modelUrl = currentPal.attributes.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
   return {
-    title: currentPal?.attributes?.name || '',
+    title: currentPal.attributes.name,
     openGraph: {
       images: [modelImage],
     },
@@ -42,19 +45,18 @@ export default async function SinglePalPage({
   params: { slug: string };
 }) {
   const { data }: { data: Array<Pal> } = await getData(params.slug);
-  const currentPal = data?.[0];
-  console.log(data, currentPal);
-  const modelUrl = currentPal?.attributes?.model?.data?.attributes?.url;
+  const currentPal = data[0];
+  const modelUrl = currentPal.attributes.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
-  const elements = currentPal?.attributes?.elements?.data;
+  const elements = currentPal.attributes.elements?.data;
   const firstElement = elements?.[0];
   const bgColor1 = firstElement ? firstElement.attributes.color : '';
   const bgColor2 =
     elements?.length === 2 ? elements?.[1]?.attributes.color : '';
 
-  const itemsDrops = currentPal?.attributes?.items_drops?.data;
-  const workSuitabilities = currentPal?.attributes?.work_suitabilities?.data;
-  const partnerSkills = currentPal?.attributes?.partner_skills?.data;
+  const itemsDrops = currentPal.attributes.items_drops?.data;
+  const workSuitabilities = currentPal.attributes.work_suitabilities?.data;
+  const partnerSkills = currentPal.attributes.partner_skills?.data;
 
   return (
     <main
@@ -72,17 +74,17 @@ export default async function SinglePalPage({
         </div>
         <div className="layout grid-col relative grid justify-center gap-y-4 py-2 text-left sm:grid-cols-2 sm:py-10">
           <div className="z-10 col-span-2 sm:col-span-1">
-            #{addLeadingZeros(currentPal?.attributes?.number, 3)}
-            <h1>{currentPal?.attributes?.name}</h1>
+            #{addLeadingZeros(currentPal.attributes.number, 3)}
+            <h1>{currentPal.attributes.name}</h1>
             <p className="mb-2 text-xs italic">
-              {currentPal?.attributes?.caption}
+              {currentPal.attributes.caption}
             </p>
-            {currentPal?.attributes?.description && (
+            {currentPal.attributes.description && (
               <div className="relative z-0 col-span-10 mb-4">
-                <BlocksRenderer content={currentPal?.attributes?.description} />
+                <BlocksRenderer content={currentPal.attributes.description} />
               </div>
             )}
-            {/* <div className="flex flex-wrap">
+            <div className="flex flex-wrap">
               {currentPal.attributes.elements?.data.map((e) => (
                 <Element key={e.id} element={e} displayName={true} />
               ))}
@@ -121,7 +123,7 @@ export default async function SinglePalPage({
                   ))}
                 </div>
               )}
-            </div> */}
+            </div>
           </div>
           <div className="relative z-0 col-span-2 flex h-full w-full items-center justify-start sm:col-span-1">
             <Image
@@ -142,7 +144,8 @@ export default async function SinglePalPage({
       </section>
       <Container customClass="w-full bg-slate-400/[.6] max-w-full p-2 md:p-0">
         <Container customClass="layout max-w-full py-2 sm:py-4 px-0 lg:px-0">
-          {/* <PalsSpotlight /> */}
+          {/* @ts-expect-error Server Component */}
+          <PalsSpotlight />
         </Container>
       </Container>
     </main>
