@@ -29,10 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getData(params.slug);
   const currentPal = data?.[0];
 
-  const modelUrl = currentPal.attributes.model?.data?.attributes?.url;
+  const modelUrl = currentPal?.attributes?.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
   return {
-    title: currentPal.attributes.name,
+    title: currentPal?.attributes?.name || '',
     openGraph: {
       images: [modelImage],
     },
@@ -84,7 +84,7 @@ export default async function SinglePalPage({
                 <BlocksRenderer content={currentPal?.attributes?.description} />
               </div>
             )}
-            <div className="flex flex-wrap">
+            {/* <div className="flex flex-wrap">
               {currentPal.attributes.elements?.data.map((e) => (
                 <Element key={e.id} element={e} displayName={true} />
               ))}
@@ -123,7 +123,7 @@ export default async function SinglePalPage({
                   ))}
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
           <div className="relative z-0 col-span-2 flex h-full w-full items-center justify-start sm:col-span-1">
             <Image
