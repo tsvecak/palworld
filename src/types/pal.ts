@@ -30,12 +30,7 @@ export type Pal = {
           name: string;
           slug: string;
           description: string;
-          icon: {
-            data: {
-              id: number;
-              attributes: StrapiImage;
-            };
-          };
+          icon:IconType;
         }
       }>
     };
@@ -46,12 +41,7 @@ export type Pal = {
           name: string;
           slug: string;
           description: string;
-          icon: {
-            data: {
-              id: number;
-              attributes: StrapiImage;
-            };
-          };
+          icon: IconType;
         }
       }>
     };
@@ -62,12 +52,7 @@ export type Pal = {
           name: string;
           slug: string;
           description: string;
-          icon: {
-            data: {
-              id: number;
-              attributes: StrapiImage;
-            };
-          };
+          icon: IconType;
         }
       }>
     };
@@ -84,6 +69,14 @@ export type PalElement = {
         id: number;
         attributes: StrapiImage;
       };
+    };
+  };
+}
+export type IconType = {
+  icon: {
+    data: {
+      id: number;
+      attributes: StrapiImage;
     };
   };
 }

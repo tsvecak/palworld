@@ -10,6 +10,7 @@ import { isLocal } from '@/lib/utils';
 import Blob from '@/components/Blob';
 import Container from '@/components/Container';
 import Element from '@/components/Element';
+import IconNameDescription from '@/components/IconNameDescription';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
 import { Pal } from '@/types/pal';
@@ -92,30 +93,39 @@ export default async function SinglePalPage({
               {partnerSkills?.length > 0 && (
                 <div className="my-2">
                   <h4>Partner Skill:</h4>
-                  {partnerSkills?.map(
-                    (i) => `${i.attributes.name} - ${i.attributes.description}`
-                  )}
+                  {partnerSkills?.map((i) => (
+                    <IconNameDescription
+                      key={`partnerSkills${i.id}`}
+                      item={i.attributes}
+                    />
+                  ))}
                 </div>
               )}
               {workSuitabilities?.length > 0 && (
                 <div className="my-2">
                   <h4>Work Suitability:</h4>
-                  {workSuitabilities?.map(
-                    (i) => `${i.attributes.name} - ${i.attributes.description}`
-                  )}
+                  {workSuitabilities?.map((i) => (
+                    <IconNameDescription
+                      key={`workSuitabilities${i.id}`}
+                      item={i.attributes}
+                    />
+                  ))}
                 </div>
               )}
               {itemsDrops?.length > 0 && (
                 <div className="my-2">
                   <h4>Possible Drops:</h4>
-                  {itemsDrops?.map(
-                    (i) => `${i.attributes.name} - ${i.attributes.description}`
-                  )}
+                  {itemsDrops?.map((i) => (
+                    <IconNameDescription
+                      key={`itemsDrops${i.id}`}
+                      item={i.attributes}
+                    />
+                  ))}
                 </div>
               )}
             </div>
           </div>
-          <div className="relative z-0 col-span-2 flex h-full w-full items-center justify-start sm:col-span-1 sm:h-[400px]">
+          <div className="relative z-0 col-span-2 flex h-full w-full items-center justify-start sm:col-span-1">
             <Image
               className="w-auto transition-all group-hover:scale-110"
               src={modelImage}
