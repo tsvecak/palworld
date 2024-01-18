@@ -9,7 +9,6 @@ import { isLocal } from '@/lib/utils';
 
 import Blob from '@/components/Blob';
 import Container from '@/components/Container';
-import PalsSpotlight from '@/components/PalsSpotlight';
 
 import { Pal } from '@/types/pal';
 
