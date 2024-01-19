@@ -1,13 +1,13 @@
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import addLeadingZeros from '@/lib/addLeadingZero';
 import getPal from '@/lib/getPal';
 import { isLocal } from '@/lib/utils';
 
 import Blob from '@/components/Blob';
+import BackButton from '@/components/buttons/BackButton';
 import Container from '@/components/Container';
 import Element from '@/components/Element';
 import IconNameDescription from '@/components/IconNameDescription';
@@ -65,12 +65,7 @@ export default async function SinglePalPage({
     >
       <section className="mb-4 bg-white">
         <div className="layout relative py-2 text-left">
-          <Link
-            href="/paldeck"
-            className="mb-auto underline underline-offset-2"
-          >
-            {`< `}Back to Paldeck
-          </Link>
+          <BackButton />
         </div>
         <div className="layout grid-col relative grid justify-center gap-y-4 py-2 text-left sm:grid-cols-2 sm:py-10">
           <div className="z-10 col-span-2 sm:col-span-1">
