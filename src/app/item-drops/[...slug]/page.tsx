@@ -44,9 +44,11 @@ export default async function SingleItemDropPage({
           })}
         </div>
       </Container>
-      <Container customClass="w-full  bg-slate-400/[.6]">
-        {/* @ts-expect-error Server Component */}
-        <PalsSpotlight />
+      <Container customClass="w-full bg-slate-400/[.6] max-w-full p-2 md:p-0">
+        <Container customClass="layout max-w-7xl py-2 sm:py-4 px-0 lg:px-0">
+          {/* @ts-expect-error Server Component */}
+          <PalsSpotlight />
+        </Container>
       </Container>
     </main>
   );
