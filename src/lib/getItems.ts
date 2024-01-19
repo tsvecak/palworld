@@ -1,8 +1,7 @@
 const getItems = async (query?: string, noCache?: boolean) => {
   return fetch(
     `${process.env.STRAPI_URL}/api/items-drops?${
-      query ? `&${query}` : ''
-    }`,
+      query ? `&${query}` : ''}&pagination[page]=1&pagination[pageSize]=200`,
     {
       headers: {
         'Content-Type': 'application/json',
