@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import * as React from 'react';
 
 import '@/styles/globals.css';
@@ -43,6 +44,11 @@ export default function RootLayout({
 }) {
   return (
     <html>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3782270251926648"
+        crossOrigin="anonymous"
+      />
       <body>
         <Header />
         {children}
