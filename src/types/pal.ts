@@ -64,6 +64,7 @@ export type PalElement = {
   attributes: {
     name: string;
     color: string;
+    slug: string;
     icon: {
       data: {
         id: number;
