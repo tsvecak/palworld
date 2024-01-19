@@ -1,7 +1,6 @@
 import getPals from '@/lib/getPals';
 
-import PalCard from '@/components/cards/palCard/PalCard';
-import Container from '@/components/Container';
+import PalsList from '@/app/paldeck/PalsList';
 
 import { Pal } from '@/types/pal';
 
@@ -13,15 +12,5 @@ async function getData() {
 export default async function Paldeck() {
   const { data }: { data: Array<Pal> } = await getData();
   const palsList = data ? data : [];
-  return (
-    <main>
-      <Container customClass="w-full">
-        <div className="relative grid grid-cols-1 gap-x-2 gap-y-6 py-12 text-left sm:grid-cols-2 lg:grid-cols-4">
-          {palsList?.map((p) => (
-            <PalCard key={p.id} pal={p} />
-          ))}
-        </div>
-      </Container>
-    </main>
-  );
+  return <PalsList palsList={palsList} />;
 }
