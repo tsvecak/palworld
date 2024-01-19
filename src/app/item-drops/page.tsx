@@ -1,0 +1,59 @@
+import Link from 'next/link';
+
+import getItems from '@/lib/getItems';
+
+import Container from '@/components/Container';
+import PalsSpotlight from '@/components/PalsSpotlight';
+
+async function getData() {
+  const items = await getItems();
+
+  return {
+    items: items.data,
+  };
+}
+export default async function Paldeck() {
+  const data = await getData();
+  const items = data ? data.items : [];
+
+  return (
+    <main
+      className="flex h-full flex-col justify-between"
+      style={{
+        height: 'calc(100vh - 72px)',
+      }}
+    >
+      <Container customClass="w-full">
+        <div className="mx-auto grid w-full grid-cols-4 gap-2">
+          {items.map((i: any) => {
+            const name = i.attributes.name;
+            const description = i.attributes.description;
+            const palsLength = i.attributes.pals?.data?.length || 0;
+            const hasPals = palsLength > 0;
+            const palsWording = palsLength > 1 ? 'Pals' : 'Pal';
+            return (
+              <div key={`item_drops_${i.id}`} className="rounded border p-2">
+                <Link
+                  href={`/item-drops/${i.attributes.slug}`}
+                  className="cursor-pointer"
+                >
+                  {name}
+                  {description ? ` - ${description}` : ''}
+                  <div className="grid grid-cols-3">
+                    {hasPals
+                      ? `Dropped by: ${palsLength} ${palsWording}`
+                      : 'Gatherable'}
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+      <Container customClass="w-full  bg-slate-400/[.6]">
+        {/* @ts-expect-error Server Component */}
+        <PalsSpotlight />
+      </Container>
+    </main>
+  );
+}

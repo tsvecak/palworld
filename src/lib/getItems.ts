@@ -1,6 +1,8 @@
-const getItem = async (slug: string, noCache?: boolean) => {
+const getItems = async (query?: string, noCache?: boolean) => {
   return fetch(
-    `${process.env.STRAPI_URL}/api/pals?filters[slug][$eq]=${slug}`,
+    `${process.env.STRAPI_URL}/api/items-drops?${
+      query ? `&${query}` : ''
+    }`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -14,4 +16,4 @@ const getItem = async (slug: string, noCache?: boolean) => {
     .catch((errors) => console.log(errors));
 };
 
-export default getItem;
+export default getItems

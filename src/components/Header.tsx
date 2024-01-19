@@ -6,6 +6,21 @@ import { useState } from 'react';
 
 import Container from '@/components/Container';
 
+const menuItems = [
+  {
+    label: 'Home',
+    link: '/',
+  },
+  {
+    label: 'Paldeck',
+    link: '/paldeck',
+  },
+  {
+    label: 'Item Drops',
+    link: '/item-drops',
+  },
+];
+
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -38,18 +53,15 @@ const Header = () => {
             </button>
           </div>
           <Popover.Group className="hidden lg:flex lg:gap-x-12">
-            <Link
-              href="/"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Home
-            </Link>
-            <Link
-              href="/paldeck"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Paldeck
-            </Link>
+            {menuItems.map((i) => (
+              <Link
+                key={`menu_item_desktop_${i.link}`}
+                href={i.link}
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                {i.label}
+              </Link>
+            ))}
           </Popover.Group>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end"> </div>
         </Container>
@@ -75,18 +87,15 @@ const Header = () => {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Link
-                  href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/paldeck"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Paldeck
-                </Link>
+                {menuItems.map((i) => (
+                  <Link
+                    key={`menu_item_desktop_${i.link}`}
+                    href={i.link}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    {i.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

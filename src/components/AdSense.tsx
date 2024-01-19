@@ -13,9 +13,7 @@ const AdsComponent = (props: { dataAdSlot: any; pal: Pal }) => {
   useEffect(() => {
     try {
       window.adsbygoogle = window.adsbygoogle.push({});
-      console.log('aaa');
     } catch (e) {
-      console.log('bbb');
       setHasAd(false);
     }
   }, []);
