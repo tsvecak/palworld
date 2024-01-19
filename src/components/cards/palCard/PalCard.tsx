@@ -21,11 +21,13 @@ const PalCard = ({ pal }: { pal: Pal }) => {
   };
 
   const NumberNamePlate = () => (
-    <div className="drop-shadow-new mx-auto -mt-4 grid w-10/12 grid-cols-2 justify-between self-center rounded-lg bg-purple-900 p-2 px-6 text-sm">
-      <div className="font-bold">
+    <div className="drop-shadow-new mx-auto -mt-4 grid w-10/12 grid-cols-3 justify-between self-center rounded-lg bg-purple-900 p-2 px-6 text-sm">
+      <div className="col-span-1 font-bold">
         #{addLeadingZeros(pal.attributes.number, 3)}
       </div>
-      <div className="text-right font-bold">{pal.attributes.name}</div>
+      <div className="col-span-2 text-right font-bold">
+        {pal.attributes.name}
+      </div>
     </div>
   );
 
