@@ -37,7 +37,7 @@ export default async function Paldeck() {
                   href={`/item-drops/${i.attributes.slug}`}
                   className="cursor-pointer"
                 >
-                  {name}
+                  <b>{name}</b>
                   {description ? ` - ${description}` : ''}
                   <div className="grid grid-cols-3">
                     {hasPals
