@@ -10,6 +10,6 @@ export function isLocal(url: string) {
   const currEnv = process.env.NODE_ENV
   if(currEnv === 'production') return url;
   if(url.includes('cloudinary')) return url
-  const newUrl = `${process.env.STRAPI_URL}${url}`
+  const newUrl = `http://127.0.0.1:1337${url}`
   return newUrl
 };

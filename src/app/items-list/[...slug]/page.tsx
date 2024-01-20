@@ -20,13 +20,13 @@ export default async function SingleItemDropPage({
   const items = data ? (data as unknown as Array<any>) : [];
   return (
     <main
-      className="flex h-full flex-col justify-between"
+      className="dark:bg-dark flex h-full flex-col justify-between dark:text-white"
       style={{
         height: 'calc(100vh - 72px)',
       }}
     >
       <Container customClass="w-full">
-        <BackButton label="Back to items" />
+        <BackButton />
         <div className="mx-auto w-full">
           {items.map((i) => {
             const name = i.attributes.name;

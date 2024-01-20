@@ -18,7 +18,7 @@ export default async function Paldeck() {
 
   return (
     <main
-      className="flex h-full flex-col justify-between"
+      className="dark:bg-dark flex h-full flex-col justify-between dark:text-white"
       style={{
         height: 'calc(100vh - 72px)',
       }}
@@ -34,7 +34,7 @@ export default async function Paldeck() {
             return (
               <div key={`item_drops_${i.id}`} className="rounded border p-2">
                 <Link
-                  href={`/item-drops/${i.attributes.slug}`}
+                  href={`/items-list/${i.attributes.slug}`}
                   className="cursor-pointer"
                 >
                   <b>{name}</b>

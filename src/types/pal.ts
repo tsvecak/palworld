@@ -20,6 +20,12 @@ export type Pal = {
         attributes: StrapiImage;
       };
     };
+    habitat: {
+      data: Array<{
+        id: number;
+        attributes: StrapiImage;
+      }>;
+    };
     elements: {
       data: Array<PalElement>;
     };

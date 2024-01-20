@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import Container from '@/components/Container';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
 const menuItems = [
   {
@@ -16,8 +17,8 @@ const menuItems = [
     link: '/paldeck',
   },
   {
-    label: 'Item Drops',
-    link: '/item-drops',
+    label: 'Items List',
+    link: '/items-list',
   },
 ];
 
@@ -25,22 +26,16 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white drop-shadow-md">
+    <header className="dark:bg-dark sticky top-0 z-50 bg-white drop-shadow-md dark:text-white">
       <nav aria-label="Global">
         <Container customClass="w-full flex items-center justify-between">
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <span>Paldeck</span>
-              {/* <picture className="h-8 w-auto">
-              <source srcSet="images/logo.webp" type="image/webp" />
-              <source srcSet="images/logo.png" type="image/png" />
-              <img
-                src="images/logo.png"
-                style={{ height: 'inherit' }}
-                alt="palworld logo"
-              />
-            </picture> */}
             </Link>
+          </div>
+          <div className="justify-end lg:hidden">
+            <ThemeSwitcher />
           </div>
           <div className="flex lg:hidden">
             <button
@@ -57,27 +52,30 @@ const Header = () => {
               <Link
                 key={`menu_item_desktop_${i.link}`}
                 href={i.link}
-                className="text-sm font-semibold leading-6 text-gray-900"
+                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
               >
                 {i.label}
               </Link>
             ))}
           </Popover.Group>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end"> </div>
+          <div className="hidden justify-end lg:flex">
+            <ThemeSwitcher />
+          </div>
         </Container>
       </nav>
       <Dialog
         as="div"
-        className="lg:hidden"
+        className="lg:hidden dark:fill-white dark:text-white"
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="dark:bg-dark fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
@@ -91,7 +89,7 @@ const Header = () => {
                   <Link
                     key={`menu_item_desktop_${i.link}`}
                     href={i.link}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
                   >
                     {i.label}
                   </Link>
