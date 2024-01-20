@@ -64,7 +64,7 @@ const SearchForm = ({
         <input
           type="text"
           id="pals_name_input"
-          className="block w-full rounded-l-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+          className="dark:bg-dark block w-full rounded-l-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:text-white"
           placeholder="Lovander"
           value={nameFilter}
           onChange={(e) => setNameFilter(e.target.value)}
@@ -77,7 +77,7 @@ const SearchForm = ({
           type="submit"
           icon={GoSearch}
           variant="light"
-          className="h-[42px] w-[44px] rounded-r-lg"
+          className="dark:bg-dark h-[42px] w-[44px] rounded-r-lg dark:text-white"
         />
         <IconButton
           style={{
@@ -87,7 +87,7 @@ const SearchForm = ({
           }}
           type="submit"
           variant="light"
-          className="h-[42px] w-[44px] rounded-r-lg"
+          className="dark:bg-dark h-[42px] w-[44px] rounded-r-lg dark:text-white"
           icon={IoCloseOutline}
           onClick={() => clearSearch()}
           disabled={!nameFilter && elemFilter.length < 1}

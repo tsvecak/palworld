@@ -19,7 +19,7 @@ const Element = ({
 }) => {
   const icon = element.attributes.icon;
   let wrapperClass = clsx(
-    `mb-2 mr-2 flex items-center gap-2 rounded-full border-2 bg-white px-1 py-1 text-center text-sm font-semibold text-black hover:w-auto hover:pr-3 ${
+    `mb-2 mr-2 flex items-center gap-2 rounded-full border-2 bg-white dark:bg-dark dark:text-white px-1 py-1 text-center text-sm font-semibold text-black hover:w-auto hover:pr-3 ${
       displayName ? 'pr-3' : ''
     }${onClick ? ' hover:cursor-pointer' : ''}`
   );
