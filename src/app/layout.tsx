@@ -5,6 +5,7 @@ import * as React from 'react';
 import '@/styles/globals.css';
 
 import Header from '@/components/Header';
+import { ThemeProvider } from '@/components/theme-provider';
 
 import { siteConfig } from '@/constant/config';
 // TODO: Fix OG Images
@@ -51,8 +52,10 @@ export default function RootLayout({
         data-ad-client="ca-pub-3782270251926648"
       />
       <body>
-        <Header />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

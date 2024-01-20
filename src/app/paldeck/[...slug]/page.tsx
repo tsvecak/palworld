@@ -1,17 +1,17 @@
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { Metadata } from 'next';
-import Image from 'next/image';
 
 import addLeadingZeros from '@/lib/addLeadingZero';
 import getPal from '@/lib/getPal';
 import { isLocal } from '@/lib/utils';
 
-import Blob from '@/components/Blob';
 import BackButton from '@/components/buttons/BackButton';
 import Container from '@/components/Container';
 import Element from '@/components/Element';
 import IconNameDescription from '@/components/IconNameDescription';
 import PalsSpotlight from '@/components/PalsSpotlight';
+
+import PalImage from '@/app/paldeck/[...slug]/PalImage';
 
 import { Pal } from '@/types/pal';
 
@@ -57,16 +57,17 @@ export default async function SinglePalPage({
   const itemsDrops = currentPal.attributes.items_drops?.data;
   const workSuitabilities = currentPal.attributes.work_suitabilities?.data;
   const partnerSkills = currentPal.attributes.partner_skills?.data;
-  const habitatImage = currentPal.attributes.habitat.data[0].attributes.url;
-  console.log(habitatImage);
+  const habitatImage =
+    currentPal.attributes.habitat?.data?.[0]?.attributes?.url;
+
   return (
     <main
       style={{ height: 'calc(100vh - 72px)' }}
-      className="flex flex-col justify-between"
+      className="dark:bg-dark flex flex-col justify-between dark:text-white"
     >
-      <section className="mb-4 bg-white">
+      <section className="mb-4">
         <div className="layout relative py-2 text-left">
-          <BackButton label="Back to Paldeck" />
+          <BackButton />
         </div>
         <div className="layout grid-col relative grid justify-center gap-y-4 py-2 text-left sm:grid-cols-2 sm:py-10">
           <div className="z-10 col-span-2 sm:col-span-1">
@@ -121,35 +122,14 @@ export default async function SinglePalPage({
               )}
             </div>
           </div>
-          <div className="relative z-0 col-span-2 flex h-full w-full items-center justify-start sm:col-span-1">
-            <Image
-              className="w-auto transition-all group-hover:scale-110"
-              src={modelImage}
-              alt="Sunset in the mountains"
-              style={{
-                height: modelUrl ? '200px' : '50px',
-                width: 'auto',
-                margin: '0 auto',
-              }}
-              width={200}
-              height={180}
-            />
-            <Blob color1={bgColor1} color2={bgColor2} />
-          </div>
-          <div>
-            <Image
-              className="w-auto transition-all group-hover:scale-110"
-              src={isLocal(habitatImage)}
-              alt="Sunset in the mountains"
-              style={{
-                height: modelUrl ? '200px' : '50px',
-                width: 'auto',
-                margin: '0 auto',
-              }}
-              width={200}
-              height={180}
-            />
-          </div>
+          <PalImage
+            modelName={currentPal.attributes.name}
+            bgColor1={bgColor1}
+            bgColor2={bgColor2}
+            habitatImage={habitatImage}
+            modelImage={modelImage}
+            modelUrl={modelUrl}
+          />
         </div>
       </section>
       <Container customClass="w-full bg-slate-400/[.6] max-w-full p-2 md:p-0">

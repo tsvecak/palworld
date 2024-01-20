@@ -21,10 +21,10 @@ export type Pal = {
       };
     };
     habitat: {
-      data: {
+      data: Array<{
         id: number;
         attributes: StrapiImage;
-      };
+      }>;
     };
     elements: {
       data: Array<PalElement>;

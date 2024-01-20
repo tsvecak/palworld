@@ -59,7 +59,7 @@ const PalsList = ({
   };
 
   return (
-    <main>
+    <main className="dark:bg-dark dark:text-white">
       <Container customClass="w-full">
         <div className="mx-auto max-w-xl">
           <SearchForm
