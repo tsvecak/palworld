@@ -57,7 +57,8 @@ export default async function SinglePalPage({
   const itemsDrops = currentPal.attributes.items_drops?.data;
   const workSuitabilities = currentPal.attributes.work_suitabilities?.data;
   const partnerSkills = currentPal.attributes.partner_skills?.data;
-
+  const habitatImage = currentPal.attributes.habitat.data[0].attributes.url;
+  console.log(habitatImage);
   return (
     <main
       style={{ height: 'calc(100vh - 72px)' }}
@@ -134,6 +135,20 @@ export default async function SinglePalPage({
               height={180}
             />
             <Blob color1={bgColor1} color2={bgColor2} />
+          </div>
+          <div>
+            <Image
+              className="w-auto transition-all group-hover:scale-110"
+              src={isLocal(habitatImage)}
+              alt="Sunset in the mountains"
+              style={{
+                height: modelUrl ? '200px' : '50px',
+                width: 'auto',
+                margin: '0 auto',
+              }}
+              width={200}
+              height={180}
+            />
           </div>
         </div>
       </section>
