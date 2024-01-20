@@ -1,5 +1,6 @@
 import getItem from '@/lib/getItem';
 
+import BackButton from '@/components/buttons/BackButton';
 import PalCard from '@/components/cards/palCard/PalCard';
 import Container from '@/components/Container';
 import PalsSpotlight from '@/components/PalsSpotlight';
@@ -25,6 +26,7 @@ export default async function SingleItemDropPage({
       }}
     >
       <Container customClass="w-full">
+        <BackButton label="Back to items" />
         <div className="mx-auto w-full">
           {items.map((i) => {
             const name = i.attributes.name;

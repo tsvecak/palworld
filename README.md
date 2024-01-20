@@ -22,7 +22,7 @@ This repository is 🔋 battery packed with:
 
 ## Getting Started
 
-### 2. Install dependencies
+### 1. Install dependencies
 
 It is encouraged to use **pnpm** so the husky hooks can work properly.
 

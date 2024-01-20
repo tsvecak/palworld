@@ -66,7 +66,7 @@ export default async function SinglePalPage({
     >
       <section className="mb-4 bg-white">
         <div className="layout relative py-2 text-left">
-          <BackButton />
+          <BackButton label="Back to Paldeck" />
         </div>
         <div className="layout grid-col relative grid justify-center gap-y-4 py-2 text-left sm:grid-cols-2 sm:py-10">
           <div className="z-10 col-span-2 sm:col-span-1">
