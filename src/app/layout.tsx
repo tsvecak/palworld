@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import * as React from 'react';
 
 import '@/styles/globals.css';
@@ -44,6 +45,12 @@ export default function RootLayout({
 }) {
   return (
     <html>
+      <Script
+        src="https://alwingulla.com/88/tag.min.js"
+        data-zone="36742"
+        async
+        data-cfasync="false"
+      />
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
