@@ -1,6 +1,5 @@
 import { getRandomPals } from '@/lib/getPals';
 
-import AdsComponent from '@/components/AdSense';
 import PalCard from '@/components/cards/palCard/PalCard';
 
 import { Pal } from '@/types/pal';
@@ -14,7 +13,6 @@ const PalsSpotlight = async () => {
         {data.slice(0, 3).map((pal: Pal) => (
           <PalCard key={pal.id} pal={pal} />
         ))}
-        <AdsComponent dataAdSlot="1663993890" pal={data[3]} />
       </div>
     </div>
   );
