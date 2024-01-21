@@ -11,7 +11,7 @@ export default function Hero() {
         backgroundImage: 'url(/images/palworld-large.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: 'calc(100vh - 72px)',
+        height: 'calc(100vh - 88px)',
       }}
     >
       <div className="mx-auto flex h-full items-center px-6 pt-14 lg:px-8">

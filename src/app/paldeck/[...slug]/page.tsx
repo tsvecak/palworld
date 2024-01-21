@@ -62,7 +62,7 @@ export default async function SinglePalPage({
 
   return (
     <main
-      style={{ height: 'calc(100vh - 72px)' }}
+      style={{ height: 'calc(100vh - 88px)' }}
       className="dark:bg-dark flex flex-col justify-between dark:text-white"
     >
       <section className="mb-4">

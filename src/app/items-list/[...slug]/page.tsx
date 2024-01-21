@@ -22,7 +22,7 @@ export default async function SingleItemDropPage({
     <main
       className="dark:bg-dark flex h-full flex-col justify-between dark:text-white"
       style={{
-        height: 'calc(100vh - 72px)',
+        height: 'calc(100vh - 88px)',
       }}
     >
       <Container customClass="w-full">
