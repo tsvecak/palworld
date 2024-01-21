@@ -1,53 +1,46 @@
 'use client';
+
 import { useEffect, useRef } from 'react';
 
-interface AdsterraProps {
-  slot?: string;
-}
-
-const getId = (slot: string) => `atContainer-${slot}`;
-
-const Adsterra = ({
-  slot = '1da3d983f33a6ba2dd5dcb675547fc78',
-}: AdsterraProps): JSX.Element => {
-  const ref = useRef<HTMLDivElement>();
+export default function Banner(): JSX.Element {
+  const banner = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!ref.current?.firstChild && slot) {
-      const atAsyncOptions = {
-        key: slot,
-        format: 'js',
-        async: true,
-        container: getId(slot),
-        params: {},
-      };
-
+    const atOptions = {
+      key: '1da3d983f33a6ba2dd5dcb675547fc78',
+      format: 'iframe',
+      height: 50,
+      width: 320,
+      params: {},
+    };
+    if (banner.current && !banner.current.firstChild) {
       const conf = document.createElement('script');
-      conf.innerHTML = `
-        if (typeof atAsyncOptions !== 'object') var atAsyncOptions = [];
-        atAsyncOptions.push(${JSON.stringify(atAsyncOptions, null, 2)});
-      `;
-      conf.type = 'text/javascript';
-
       const script = document.createElement('script');
-      script.async = true;
-      script.src = `//pl22226563.toprevenuegate.com/${slot}/invoke.js`;
       script.type = 'text/javascript';
-
-      if (ref.current) {
-        ref.current.append(conf);
-        ref.current.append(script);
-      }
+      script.src = `//pl22226563.toprevenuegate.com/1da3d983f33a6ba2dd5dcb675547fc78/invoke.js`;
+      conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
+      banner.current.append(conf);
+      banner.current.append(script);
     }
-  }, [slot]);
+  }, [banner]);
 
   return (
-    <>
-      {/* @ts-expect-error Server Component */}
-      <div {...{ ref }} />
-      <div id={getId(slot)} />
-    </>
+    <div
+      style={{
+        height: 50,
+        width: 320,
+        marginLeft: '0.5rem',
+        marginRight: '0.5rem',
+        marginTop: '1.25rem',
+        marginBottom: '1.25rem',
+        color: '#ffffff',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: '1px',
+        borderColor: '#E5E7EB',
+      }}
+      ref={banner}
+    ></div>
   );
-};
-
-export default Adsterra;
+}
