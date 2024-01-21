@@ -20,6 +20,11 @@ const menuItems = [
     label: 'Items List',
     link: '/items-list',
   },
+  {
+    label: 'Map',
+    link: 'https://mapgenie.io/palworld/maps/palpagos-islands',
+    external: true,
+  },
 ];
 
 const Header = () => {
@@ -48,15 +53,29 @@ const Header = () => {
             </button>
           </div>
           <Popover.Group className="hidden lg:flex lg:gap-x-12">
-            {menuItems.map((i) => (
-              <Link
-                key={`menu_item_desktop_${i.link}`}
-                href={i.link}
-                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
-              >
-                {i.label}
-              </Link>
-            ))}
+            {menuItems.map((i) => {
+              if (i.external) {
+                return (
+                  <a
+                    key={`menu_item_desktop_${i.link}`}
+                    href={i.link}
+                    className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
+                    target="_blank"
+                  >
+                    {i.label}
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={`menu_item_desktop_${i.link}`}
+                  href={i.link}
+                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
+                >
+                  {i.label}
+                </Link>
+              );
+            })}
           </Popover.Group>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end"> </div>
           <div className="hidden justify-end lg:flex">
@@ -85,15 +104,28 @@ const Header = () => {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {menuItems.map((i) => (
-                  <Link
-                    key={`menu_item_desktop_${i.link}`}
-                    href={i.link}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
-                  >
-                    {i.label}
-                  </Link>
-                ))}
+                {menuItems.map((i) => {
+                  if (i.external) {
+                    return (
+                      <a
+                        key={`menu_item_mobile_${i.link}`}
+                        href={i.link}
+                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
+                      >
+                        {i.label}
+                      </a>
+                    );
+                  }
+                  return (
+                    <Link
+                      key={`menu_item_mobile_${i.link}`}
+                      href={i.link}
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
+                    >
+                      {i.label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
