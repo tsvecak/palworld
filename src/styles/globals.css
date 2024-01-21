@@ -134,6 +134,7 @@
   top: 0;
   width: 100%;
   height: 100%;
+  border-radius: 0.75rem;
 }
 .background-pattern.negativeIndex:after {
   filter: brightness(0.01);
