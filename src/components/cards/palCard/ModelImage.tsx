@@ -5,15 +5,17 @@ import { CSSProperties } from 'react';
 const CoverImage = ({
   imageUrl,
   isModel,
+  center,
 }: {
   imageUrl: string;
   isModel: boolean;
+  center?: boolean;
 }) => {
   let styles: CSSProperties = {
-    height: '150px',
+    height: center ? '200px' : '150px',
     width: 'auto',
     margin: '0 auto',
-    marginTop: '-3rem',
+    marginTop: center ? '0' : '-3rem',
   };
   if (!isModel) {
     styles = {

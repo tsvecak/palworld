@@ -7,7 +7,7 @@ import ModelImage from '@/components/cards/palCard/ModelImage';
 import Element from '@/components/Element';
 
 import { Pal } from '@/types/pal';
-const PalCard = ({ pal }: { pal: Pal }) => {
+const PalCard = ({ pal, center }: { pal: Pal; center?: boolean }) => {
   const modelUrl = pal.attributes.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
   const elements = pal.attributes.elements?.data;
@@ -37,7 +37,11 @@ const PalCard = ({ pal }: { pal: Pal }) => {
         className="hover:animate-gradient group relative flex h-full min-h-36 max-w-full flex-col justify-between rounded bg-emerald-800 py-4 text-white shadow-lg"
         style={bgColor2 ? gradientBg : { backgroundColor: bgColor1 }}
       >
-        <ModelImage imageUrl={modelImage} isModel={!!modelUrl} />
+        <ModelImage
+          imageUrl={modelImage}
+          isModel={!!modelUrl}
+          center={center}
+        />
         <NumberNamePlate />
         <div className="absolute left-0 top-0 grid grid-cols-1 px-2 pt-2">
           {elements?.map((e) => {

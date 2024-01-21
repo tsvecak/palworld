@@ -25,7 +25,7 @@ const Element = ({
   );
   let elemClass = 'overflow-hidden transition-all';
   if (!displayName) {
-    wrapperClass = clsx(wrapperClass, 'w-[32px] hover:w-auto');
+    wrapperClass = clsx(wrapperClass, 'w-[32px] h-[32px] hover:w-auto');
     elemClass = clsx(elemClass, 'w-0 group-hover:w-full');
   }
   const imageUrl = isLocal(icon.data.attributes.url);

@@ -20,7 +20,8 @@ export default async function Paldeck() {
     <main
       className="dark:bg-dark flex h-full flex-col justify-between dark:text-white"
       style={{
-        height: 'calc(100vh - 72px)',
+        height: 'auto',
+        minHeight: 'calc(100% - 72px)',
       }}
     >
       <Container customClass="w-full">

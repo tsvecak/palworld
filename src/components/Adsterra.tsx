@@ -6,41 +6,30 @@ export default function Banner(): JSX.Element {
   const banner = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (banner?.current?.firstChild) {
+      document.getElementById('toms-ad')?.remove();
+      document.getElementById('toms-ad-script')?.remove();
+    }
     const atOptions = {
-      key: '1da3d983f33a6ba2dd5dcb675547fc78',
+      key: 'f83069098ea47d989a65b6a43a0e1927',
       format: 'iframe',
-      height: 50,
-      width: 320,
+      height: 250,
+      width: 300,
       params: {},
     };
-    if (banner.current && !banner.current.firstChild) {
+    if (banner.current) {
       const conf = document.createElement('script');
+      conf.id = 'toms-ad';
       const script = document.createElement('script');
+      script.id = 'toms-ad-script';
       script.type = 'text/javascript';
-      script.src = `//pl22226563.toprevenuegate.com/1da3d983f33a6ba2dd5dcb675547fc78/invoke.js`;
+      script.src = `//topcreativeformat.com/f83069098ea47d989a65b6a43a0e1927/invoke.js`;
       conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
+
       banner.current.append(conf);
       banner.current.append(script);
     }
-  }, [banner]);
+  }, []);
 
-  return (
-    <div
-      style={{
-        height: 50,
-        width: 320,
-        marginLeft: '0.5rem',
-        marginRight: '0.5rem',
-        marginTop: '1.25rem',
-        marginBottom: '1.25rem',
-        color: '#ffffff',
-        textAlign: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: '1px',
-        borderColor: '#E5E7EB',
-      }}
-      ref={banner}
-    ></div>
-  );
+  return <div ref={banner}></div>;
 }
