@@ -82,8 +82,7 @@ export default function ItemsList({
             const name = i.attributes.name;
             const palsList = i.attributes.pals?.data;
             const iconUrl = i.attributes.icon?.data?.attributes?.url;
-            const categories: Array<ItemCategory> =
-              i.attributes.item_categories?.data;
+            const categories = i.attributes.item_categories?.data;
             const sources = i.attributes.item_sources?.data;
 
             return (

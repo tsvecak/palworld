@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import getItem from '@/lib/getItem';
 
 import BackButton from '@/components/buttons/BackButton';
@@ -5,11 +7,12 @@ import PalCard from '@/components/cards/palCard/PalCard';
 import Container from '@/components/Container';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
+import { Item } from '@/types/items';
 import { Pal } from '@/types/pal';
 
-async function getData(slug: string): Promise<{ data: Array<any> }> {
+async function getData(slug: string): Promise<{ data: Array<Item> }> {
   const items = await getItem(slug);
-  return items.data;
+  return items;
 }
 export default async function SingleItemDropPage({
   params,
@@ -17,7 +20,7 @@ export default async function SingleItemDropPage({
   params: { slug: string };
 }) {
   const data = await getData(params.slug);
-  const items = data ? (data as unknown as Array<any>) : [];
+  const items = data ? data.data : [];
   return (
     <main
       className="dark:bg-dark flex h-full flex-col justify-between dark:text-white"
@@ -31,16 +34,47 @@ export default async function SingleItemDropPage({
           {items.map((i) => {
             const name = i.attributes.name;
             const description = i.attributes.description;
+            const categories = i.attributes.item_categories?.data;
+            const sources = i.attributes.item_sources?.data;
+            const palsList = i.attributes.pals?.data;
+            const iconUrl = i.attributes.icon?.data?.attributes?.url;
+
             return (
               <div key={`item_drops_${i.id}`}>
-                <h1 className="mb-4">{name}</h1>
-                <p>{description ? ` - ${description}` : ''}</p>
-                <div className="grid grid-cols-3 gap-2">
-                  <h2 className="col-span-3 mb-4">Dropped by these Pals</h2>
-                  {i.attributes.pals.data.map((p: Pal) => (
-                    <PalCard key={p.id} pal={p} />
-                  ))}
+                <div className="my-4 flex w-full items-center">
+                  {iconUrl && (
+                    <Image
+                      src={iconUrl}
+                      alt={name}
+                      width={50}
+                      height={50}
+                      className="mr-2"
+                    />
+                  )}
+
+                  <h1>{name}</h1>
                 </div>
+                {description && <p className="mb-4">{description}</p>}
+                <div>
+                  Category:{' '}
+                  {categories && categories.length > 0
+                    ? categories.map((c) => c.attributes.name).join(', ')
+                    : 'Unknown'}
+                </div>
+                <div>
+                  Obtained by:{' '}
+                  {sources && sources.length > 0
+                    ? sources.map((c) => c.attributes.name).join(', ')
+                    : 'Unknown'}
+                </div>
+                {palsList && palsList.length > 0 ? (
+                  <div className="mt-4 grid grid-cols-4 gap-2">
+                    <h4 className="col-span-4 mb-4">Dropped by these Pals</h4>
+                    {i.attributes.pals.data.map((p: Pal) => (
+                      <PalCard key={p.id} pal={p} />
+                    ))}
+                  </div>
+                ) : null}
               </div>
             );
           })}
