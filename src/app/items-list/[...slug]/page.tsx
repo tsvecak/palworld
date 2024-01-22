@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import getItem from '@/lib/getItem';
+import { getRandomPals } from '@/lib/getPals';
 
 import BackButton from '@/components/buttons/BackButton';
 import PalCard from '@/components/cards/palCard/PalCard';
@@ -8,11 +9,14 @@ import Container from '@/components/Container';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
 import { Item } from '@/types/items';
-import { Pal } from '@/types/pal';
+import { Pal, PalsListType } from '@/types/pal';
 
-async function getData(slug: string): Promise<{ data: Array<Item> }> {
+async function getData(
+  slug: string
+): Promise<{ items: Array<Item>; randomPals: PalsListType }> {
   const items = await getItem(slug);
-  return items;
+  const randomPals = await getRandomPals({ noCache: true, noOfPals: 3 });
+  return { items: items.data, randomPals: randomPals };
 }
 export default async function SingleItemDropPage({
   params,
@@ -20,7 +24,9 @@ export default async function SingleItemDropPage({
   params: { slug: string };
 }) {
   const data = await getData(params.slug);
-  const items = data ? data.data : [];
+  const items = data ? data.items : [];
+  const randomPals = data ? data.randomPals : [];
+
   return (
     <main
       className="dark:bg-dark flex h-full flex-col justify-between dark:text-white"
@@ -83,7 +89,7 @@ export default async function SingleItemDropPage({
       <Container customClass="w-full bg-slate-400/[.6] max-w-full p-2 md:p-0">
         <Container customClass="layout max-w-7xl py-2 sm:py-4 px-0 lg:px-0">
           {/* @ts-expect-error Server Component */}
-          <PalsSpotlight />
+          <PalsSpotlight randomPals={randomPals} />
         </Container>
       </Container>
     </main>

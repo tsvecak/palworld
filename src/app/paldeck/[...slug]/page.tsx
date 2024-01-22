@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 
 import addLeadingZeros from '@/lib/addLeadingZero';
 import getPal from '@/lib/getPal';
+import { getRandomPals } from '@/lib/getPals';
 import { isLocal } from '@/lib/utils';
 
 import BackButton from '@/components/buttons/BackButton';
@@ -13,12 +14,17 @@ import PalsSpotlight from '@/components/PalsSpotlight';
 
 import PalImage from '@/app/paldeck/[...slug]/PalImage';
 
-import { Pal } from '@/types/pal';
+import { PalsListType } from '@/types/pal';
+type SinglePalData = {
+  pal: PalsListType;
+  randomPals: PalsListType;
+};
 
-async function getData(slug: string): Promise<{ data: Array<Pal> }> {
+async function getData(slug: string): Promise<SinglePalData> {
   const res = await getPal(slug);
+  const randomPals = await getRandomPals({ noCache: true, noOfPals: 3 });
 
-  return res;
+  return { pal: res?.data, randomPals };
 }
 
 type Props = {
@@ -26,8 +32,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { data } = await getData(params.slug);
-  const currentPal = data[0];
+  const data = await getData(params.slug);
+  const currentPal = data.pal[0];
 
   const modelUrl = currentPal.attributes.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
@@ -44,8 +50,9 @@ export default async function SinglePalPage({
 }: {
   params: { slug: string };
 }) {
-  const { data }: { data: Array<Pal> } = await getData(params.slug);
-  const currentPal = data[0];
+  const data: SinglePalData = await getData(params.slug);
+  const currentPal = data.pal[0];
+  const randomPals = data.randomPals;
   const modelUrl = currentPal.attributes.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
   const elements = currentPal.attributes.elements?.data;
@@ -135,7 +142,7 @@ export default async function SinglePalPage({
       <Container customClass="w-full bg-slate-400/[.6] max-w-full p-2 md:p-0">
         <Container customClass="layout max-w-7xl py-2 sm:py-4 px-0 lg:px-0">
           {/* @ts-expect-error Server Component */}
-          <PalsSpotlight />
+          <PalsSpotlight randomPals={randomPals} />
         </Container>
       </Container>
     </main>

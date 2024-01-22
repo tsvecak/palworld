@@ -3,7 +3,9 @@ import Link from 'next/link';
 import Container from '@/components/Container';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
-export default function Hero() {
+import { PalsListType } from '@/types/pal';
+
+export default function Hero({ randomPals }: { randomPals: PalsListType }) {
   return (
     <div
       className="w-100 background-pattern negativeIndex relative isolate flex h-screen max-h-screen flex-col justify-between pb-2"
@@ -44,7 +46,7 @@ export default function Hero() {
       </div>
       <Container customClass="w-full  bg-slate-400/[.6]">
         {/* @ts-expect-error Server Component */}
-        <PalsSpotlight />
+        <PalsSpotlight randomPals={randomPals} />
       </Container>
     </div>
   );

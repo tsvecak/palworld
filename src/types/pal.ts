@@ -65,6 +65,8 @@ export type Pal = {
   };
 };
 
+export type PalsListType = Array<Pal>
+
 export type PalElement = {
   id: number;
   attributes: {

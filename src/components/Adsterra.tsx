@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-export default function Banner(): JSX.Element {
+export default function Adsterra(): JSX.Element {
   const banner = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,6 +25,11 @@ export default function Banner(): JSX.Element {
       script.type = 'text/javascript';
       script.src = `//topcreativeformat.com/f83069098ea47d989a65b6a43a0e1927/invoke.js`;
       conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
+      script.onerror = function () {
+        alert(
+          'Please disable your adblock to support this fan made Paldeck to keep the lights running :)'
+        );
+      };
 
       banner.current.append(conf);
       banner.current.append(script);
