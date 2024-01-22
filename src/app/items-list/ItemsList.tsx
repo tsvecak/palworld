@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FormEvent, useState } from 'react';
 
+import Adsterra from '@/components/Adsterra';
 import Container from '@/components/Container';
 
 import SearchForm from '@/app/items-list/SearchForm';
@@ -137,6 +138,7 @@ export default function ItemsList({
           />
         </div>
         <div className="mx-auto grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
+          <Adsterra />
           {listItems(itemsList)}
         </div>
       </Container>
