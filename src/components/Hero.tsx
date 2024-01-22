@@ -4,6 +4,7 @@ import Container from '@/components/Container';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
 import { PalsListType } from '@/types/pal';
+import Adsterra from '@/components/Adsterra';
 
 export default function Hero({ randomPals }: { randomPals: PalsListType }) {
   return (
@@ -43,6 +44,13 @@ export default function Hero({ randomPals }: { randomPals: PalsListType }) {
             </div>
           </div>
         </div>
+      </div>
+      <div className="col-span-4 mb-4 flex h-[90px] items-center justify-center">
+        <Adsterra
+          adKey="e3cbc1a0abc253ccf6768736ea421faf"
+          width={728}
+          height={90}
+        />
       </div>
       <Container customClass="w-full  bg-slate-400/[.6]">
         {/* @ts-expect-error Server Component */}

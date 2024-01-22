@@ -130,6 +130,13 @@ export default function ItemsList({
       }}
     >
       <Container customClass="w-full">
+        <div className="col-span-4 mb-4 flex h-[90px] items-center justify-center">
+          <Adsterra
+            adKey="e3cbc1a0abc253ccf6768736ea421faf"
+            width={728}
+            height={90}
+          />
+        </div>
         <div className="mx-auto mb-4 max-w-xl">
           <SearchForm
             clearFilters={clearFilters}
@@ -138,7 +145,6 @@ export default function ItemsList({
           />
         </div>
         <div className="mx-auto grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-          <Adsterra />
           {listItems(itemsList)}
         </div>
       </Container>

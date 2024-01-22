@@ -15,7 +15,7 @@ async function getData(
   slug: string
 ): Promise<{ items: Array<Item>; randomPals: PalsListType }> {
   const items = await getItem(slug);
-  const randomPals = await getRandomPals({ noCache: true, noOfPals: 3 });
+  const randomPals = await getRandomPals({ noCache: true, noOfPals: 4 });
   return { items: items.data, randomPals: randomPals };
 }
 export default async function SingleItemDropPage({
@@ -89,7 +89,7 @@ export default async function SingleItemDropPage({
       <Container customClass="w-full bg-slate-400/[.6] max-w-full p-2 md:p-0">
         <Container customClass="layout max-w-7xl py-2 sm:py-4 px-0 lg:px-0">
           {/* @ts-expect-error Server Component */}
-          <PalsSpotlight randomPals={randomPals} />
+          <PalsSpotlight randomPals={randomPals} noAds={true} />
         </Container>
       </Container>
     </main>

@@ -1,40 +1,50 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export default function Adsterra(): JSX.Element {
+import AdBlockModal from '@/components/AdsModal';
+
+export default function Adsterra({
+  height = 250,
+  width = 300,
+  adKey = 'f83069098ea47d989a65b6a43a0e1927',
+}): JSX.Element {
   const banner = useRef<HTMLDivElement>(null);
+  const [hasAdBlock, setHasAdBlock] = useState(false);
 
   useEffect(() => {
     if (banner?.current?.firstChild) {
-      document.getElementById('toms-ad')?.remove();
-      document.getElementById('toms-ad-script')?.remove();
+      document.getElementById(`ad_${adKey}`)?.remove();
+      document.getElementById(`ad_script_${adKey}`)?.remove();
     }
     const atOptions = {
-      key: 'f83069098ea47d989a65b6a43a0e1927',
+      key: adKey,
       format: 'iframe',
-      height: 250,
-      width: 300,
+      height,
+      width,
       params: {},
     };
     if (banner.current) {
       const conf = document.createElement('script');
-      conf.id = 'toms-ad';
+      conf.id = `ad_${adKey}`;
       const script = document.createElement('script');
-      script.id = 'toms-ad-script';
+      script.id = `ad_script_${adKey}`;
       script.type = 'text/javascript';
-      script.src = `//topcreativeformat.com/f83069098ea47d989a65b6a43a0e1927/invoke.js`;
+      script.src = `//topcreativeformat.com/${adKey}/invoke.js`;
       conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
       script.onerror = function () {
-        alert(
-          'Please disable your adblock to support this fan made Paldeck to keep the lights running :)'
-        );
+        setHasAdBlock(true);
       };
 
       banner.current.append(conf);
       banner.current.append(script);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <div ref={banner}></div>;
+  return (
+    <div ref={banner}>
+      <AdBlockModal isOpen={hasAdBlock} setIsOpen={setHasAdBlock} />
+    </div>
+  );
 }
