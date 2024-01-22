@@ -1,4 +1,4 @@
-import { Pal } from "@/types/pal";
+import { PalsListType } from '@/types/pal';
 import { StrapiImage } from "@/types/strapi";
 
 export type ItemCategory = {
@@ -36,6 +36,6 @@ export type Item = {
     icon: {data: {attributes: StrapiImage}},
     item_categories: {data: Array<ItemCategory>},
     item_sources: {data: Array<ItemSource> },
-    pals: {data: Array<Pal>}
+    pals: {data: PalsListType}
   }
 }

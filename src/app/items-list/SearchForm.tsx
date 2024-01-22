@@ -31,29 +31,30 @@ const SearchForm = ({
     clearFilters();
   };
 
-  const handleItemCategoryChange = (element: string) => {
+  const handleItemCategoryChange = (category: string) => {
+    console.log(category);
     const newCategoryValue: Array<string> = categoryFilter
       ? [...categoryFilter]
       : [];
-    const index = newCategoryValue.indexOf(element);
+    const index = newCategoryValue.indexOf(category);
 
     if (newCategoryValue.length === 2 && index > -1) {
-      // two already selected and user clicked on selected element
+      // two already selected and user clicked on selected category
       newCategoryValue.splice(index, 1);
       setCategoryFilter(newCategoryValue);
     } else if (newCategoryValue.length === 2 && index === -1) {
-      // two already selected and user clicked on new element
+      // two already selected and user clicked on new category
       newCategoryValue.splice(1, 1);
-      newCategoryValue.push(element);
+      newCategoryValue.push(category);
       setCategoryFilter(newCategoryValue);
     } else {
-      // less than 2 selected elements already
+      // less than 2 selected categorys already
       if (index > -1) {
-        // if user clicked on the same element
+        // if user clicked on the same category
         newCategoryValue.splice(index, 1);
       } else {
-        // if user clicked on a new element9
-        newCategoryValue.push(element);
+        // if user clicked on a new category9
+        newCategoryValue.push(category);
       }
       setCategoryFilter(newCategoryValue);
     }
@@ -107,7 +108,7 @@ const SearchForm = ({
               ) >= 0;
             return (
               <Button
-                key={`element_filter_${e.attributes.slug}`}
+                key={`category_filter_${e.attributes.slug}`}
                 onClick={() =>
                   handleItemCategoryChange(e.attributes.slug.toLowerCase())
                 }
