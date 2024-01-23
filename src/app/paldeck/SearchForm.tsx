@@ -124,23 +124,6 @@ const SearchForm = ({
             variant="light"
             className="dark:bg-dark h-[42px] w-[44px] rounded-r-lg dark:text-white"
           />
-          <IconButton
-            style={{
-              borderTopLeftRadius: 0,
-              borderBottomLeftRadius: 0,
-              borderLeft: 0,
-            }}
-            type="submit"
-            variant="light"
-            className="dark:bg-dark h-[42px] w-[44px] rounded-r-lg dark:text-white"
-            icon={IoCloseOutline}
-            onClick={() => clearSearch()}
-            disabled={
-              !nameFilter ||
-              elemFilter.length === 0 ||
-              workSuitFilter.length === 0
-            }
-          />
         </div>
         <div className="mt-2 flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
           {elements.map((e) => {
@@ -191,14 +174,10 @@ const SearchForm = ({
           </div>
         ) : null}
         {!hidden && (
-          <>
-            <div className="my-2 mr-2 text-center">
-              <Button onClick={() => clearSearch()}>Clear Filters</Button>
-            </div>
-            <div className="my-2 text-center">
-              <Button type="submit">Filter</Button>
-            </div>
-          </>
+          <div className="my-2 text-center">
+            <Button variant="outline" className="mr-2" onClick={() => clearSearch()}>Clear Filters</Button>
+            <Button type="submit">Filter</Button>
+          </div>
         )}
       </form>
       <div className="text-center">
