@@ -190,6 +190,11 @@ const SearchForm = ({
               })}
           </div>
         ) : null}
+        {!hidden && (
+          <div className="my-2 text-center">
+            <Button type="submit">Filter</Button>
+          </div>
+        )}
       </form>
       <div className="text-center">
         <Button onClick={() => setHidden(!hidden)}>
