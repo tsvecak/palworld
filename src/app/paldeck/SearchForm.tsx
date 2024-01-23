@@ -191,13 +191,18 @@ const SearchForm = ({
           </div>
         ) : null}
         {!hidden && (
-          <div className="my-2 text-center">
-            <Button type="submit">Filter</Button>
-          </div>
+          <>
+            <div className="my-2 mr-2 text-center">
+              <Button onClick={() => clearSearch()}>Clear Filters</Button>
+            </div>
+            <div className="my-2 text-center">
+              <Button type="submit">Filter</Button>
+            </div>
+          </>
         )}
       </form>
       <div className="text-center">
-        <Button onClick={() => setHidden(!hidden)}>
+        <Button variant="outline" onClick={() => setHidden(!hidden)}>
           {hidden ? 'Open ' : 'Close '}Filters
         </Button>
       </div>
