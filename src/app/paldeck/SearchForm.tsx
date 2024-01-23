@@ -103,7 +103,7 @@ const SearchForm = ({
           })
         }
         className="mb-1 grid items-center"
-        style={{ height: hidden ? '42px' : '400px', overflow: 'hidden' }}
+        style={{ height: hidden ? '42px' : 'auto', overflow: 'hidden' }}
       >
         <div className="flex w-full items-center">
           <input
