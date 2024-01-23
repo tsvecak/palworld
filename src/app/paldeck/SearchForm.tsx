@@ -1,7 +1,6 @@
 'use client';
 import { FormEvent, useState } from 'react';
 import { GoSearch } from 'react-icons/go';
-import { IoCloseOutline } from 'react-icons/io5';
 
 import Button from '@/components/buttons/Button';
 import IconButton from '@/components/buttons/IconButton';
