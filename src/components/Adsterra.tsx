@@ -13,6 +13,8 @@ export default function Adsterra({
   const [hasAdBlock, setHasAdBlock] = useState(false);
 
   useEffect(() => {
+    const isMobile = window && window.innerWidth < 640;
+    if (isMobile) return;
     if (banner?.current?.firstChild) {
       document.getElementById(`ad_${adKey}`)?.remove();
       document.getElementById(`ad_script_${adKey}`)?.remove();
