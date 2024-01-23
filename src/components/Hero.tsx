@@ -9,12 +9,11 @@ import { PalsListType } from '@/types/pal';
 export default function Hero({ randomPals }: { randomPals: PalsListType }) {
   return (
     <div
-      className="w-100 background-pattern negativeIndex relative isolate flex h-screen max-h-screen flex-col justify-between pb-2"
+      className="w-100 background-pattern negativeIndex relative isolate flex h-full flex-col justify-between pb-2 md:h-[calc(100vh_-_88px)] md:max-h-screen"
       style={{
         backgroundImage: 'url(/images/palworld-large.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: 'calc(100vh - 88px)',
       }}
     >
       <div className="mx-auto flex h-full items-center px-6 pt-14 lg:px-8">
@@ -45,7 +44,7 @@ export default function Hero({ randomPals }: { randomPals: PalsListType }) {
           </div>
         </div>
       </div>
-      <div className="col-span-4 mb-4 flex h-[90px] items-center justify-center">
+      <div className="col-span-4 my-4 flex h-[90px] items-center justify-center">
         <Adsterra
           adKey="e3cbc1a0abc253ccf6768736ea421faf"
           width={728}

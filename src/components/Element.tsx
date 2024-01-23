@@ -39,6 +39,7 @@ const Element = ({
       <Image
         src={imageUrl}
         alt={icon.data.attributes.name}
+        style={{ height: '100%' }}
         width={24}
         height={24}
       />
