@@ -1,7 +1,6 @@
 'use client';
 import { FormEvent, useState } from 'react';
 import { GoSearch } from 'react-icons/go';
-import { IoCloseOutline } from 'react-icons/io5';
 
 import Button from '@/components/buttons/Button';
 import IconButton from '@/components/buttons/IconButton';
@@ -124,23 +123,6 @@ const SearchForm = ({
             variant="light"
             className="dark:bg-dark h-[42px] w-[44px] rounded-r-lg dark:text-white"
           />
-          <IconButton
-            style={{
-              borderTopLeftRadius: 0,
-              borderBottomLeftRadius: 0,
-              borderLeft: 0,
-            }}
-            type="submit"
-            variant="light"
-            className="dark:bg-dark h-[42px] w-[44px] rounded-r-lg dark:text-white"
-            icon={IoCloseOutline}
-            onClick={() => clearSearch()}
-            disabled={
-              !nameFilter ||
-              elemFilter.length === 0 ||
-              workSuitFilter.length === 0
-            }
-          />
         </div>
         <div className="mt-2 flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
           {elements.map((e) => {
@@ -192,12 +174,14 @@ const SearchForm = ({
         ) : null}
         {!hidden && (
           <div className="my-2 text-center">
+            <Button variant="outline" className="mr-2" onClick={() => clearSearch()}>Clear Filters</Button>
             <Button type="submit">Filter</Button>
+            <hr className="mt-2" />
           </div>
         )}
       </form>
       <div className="text-center">
-        <Button onClick={() => setHidden(!hidden)}>
+        <Button variant="outline" onClick={() => setHidden(!hidden)}>
           {hidden ? 'Open ' : 'Close '}Filters
         </Button>
       </div>
