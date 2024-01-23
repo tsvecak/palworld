@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
+import Adsterra from '@/components/Adsterra';
 import Container from '@/components/Container';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
 import { PalsListType } from '@/types/pal';
-import Adsterra from '@/components/Adsterra';
 
 export default function Hero({ randomPals }: { randomPals: PalsListType }) {
   return (
@@ -54,7 +54,7 @@ export default function Hero({ randomPals }: { randomPals: PalsListType }) {
       </div>
       <Container customClass="w-full  bg-slate-400/[.6]">
         {/* @ts-expect-error Server Component */}
-        <PalsSpotlight randomPals={randomPals} />
+        <PalsSpotlight randomPals={randomPals} noAds={true} />
       </Container>
     </div>
   );

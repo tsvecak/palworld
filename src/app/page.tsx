@@ -6,7 +6,7 @@ import Hero from '@/components/Hero';
 import { PalsListType } from '@/types/pal';
 
 async function getData(): Promise<PalsListType> {
-  const randomPals = await getRandomPals({ noCache: true, noOfPals: 3 });
+  const randomPals = await getRandomPals({ noCache: true, noOfPals: 4 });
 
   return randomPals;
 }

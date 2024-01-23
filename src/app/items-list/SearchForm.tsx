@@ -24,7 +24,6 @@ const SearchForm = ({
 }) => {
   const [nameFilter, setNameFilter] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<Array<string>>([]);
-
   const clearSearch = () => {
     setNameFilter('');
     setCategoryFilter([]);
@@ -32,7 +31,6 @@ const SearchForm = ({
   };
 
   const handleItemCategoryChange = (category: string) => {
-    console.log(category);
     const newCategoryValue: Array<string> = categoryFilter
       ? [...categoryFilter]
       : [];
