@@ -136,8 +136,8 @@ const SearchForm = ({
             icon={IoCloseOutline}
             onClick={() => clearSearch()}
             disabled={
-              !nameFilter &&
-              elemFilter.length >= 1 &&
+              !nameFilter ||
+              elemFilter.length >= 1 ||
               workSuitFilter.length >= 1
             }
           />
