@@ -174,6 +174,7 @@ const SearchForm = ({
         ) : null}
         {!hidden && (
           <div className="my-2 text-center">
+            <hr />
             <Button variant="outline" className="mr-2" onClick={() => clearSearch()}>Clear Filters</Button>
             <Button type="submit">Filter</Button>
           </div>
