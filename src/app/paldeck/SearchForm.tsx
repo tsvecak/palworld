@@ -137,8 +137,8 @@ const SearchForm = ({
             onClick={() => clearSearch()}
             disabled={
               !nameFilter ||
-              elemFilter.length >= 1 ||
-              workSuitFilter.length >= 1
+              elemFilter.length <= 1 ||
+              workSuitFilter.length <= 1
             }
           />
         </div>
