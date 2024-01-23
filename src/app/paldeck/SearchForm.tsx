@@ -164,7 +164,7 @@ const SearchForm = ({
         {workSuitability && workSuitability.length > 0 ? (
           <div className="mt-2 flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
             {workSuitability
-              .sort((a, b) => (a.attributes.slug > b.attributes.slug ? -1 : 1))
+              .sort((a, b) => (a.attributes.slug < b.attributes.slug ? -1 : 1))
               .map((e) => {
                 const isActive =
                   workSuitFilter?.findIndex(
