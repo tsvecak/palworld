@@ -25,6 +25,11 @@ const menuItems = [
     link: 'https://mapgenie.io/palworld/maps/palpagos-islands',
     external: true,
   },
+  {
+    label: 'Breeding',
+    link: 'https://palworld.kimpton.io',
+    external: true,
+  },
 ];
 
 const Header = () => {
