@@ -74,8 +74,8 @@ export default async function SingleItemDropPage({
                     : 'Unknown'}
                 </div>
                 {palsList && palsList.length > 0 ? (
-                  <div className="mt-4 grid grid-cols-4 gap-2">
-                    <h4 className="col-span-4 mb-4">Dropped by these Pals</h4>
+                  <div className="mt-4 grid grid-cols-1 md:grid-cols-4 gap-2">
+                    <h4 className="col-span-1 md:col-span-4 mb-4">Dropped by these Pals</h4>
                     {i.attributes.pals.data.map((p: Pal) => (
                       <PalCard key={p.id} pal={p} />
                     ))}
