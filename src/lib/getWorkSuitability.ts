@@ -1,6 +1,6 @@
 const getWorkSuitability = async (query?: string, noCache?: boolean) => {
   return fetch(
-    `${process.env.STRAPI_URL}/api/work-suitabilities?sort=name${
+    `${process.env.STRAPI_URL}/api/work-suitabilities?populate=*&pagination[page]=1&pagination[pageSize]=200&sort=name${
       query ? `&${query}` : ''
     }`,
     {

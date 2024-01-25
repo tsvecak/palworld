@@ -1,6 +1,9 @@
 'use client';
+import Image from 'next/image';
 import { FormEvent, useState } from 'react';
 import { GoSearch } from 'react-icons/go';
+
+import { isLocal } from '@/lib/utils';
 
 import Button from '@/components/buttons/Button';
 import IconButton from '@/components/buttons/IconButton';
@@ -144,7 +147,7 @@ const SearchForm = ({
           })}
         </div>
         {workSuitability && workSuitability.length > 0 ? (
-          <div className="mt-2 flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
+          <div className="mt-2 grid grid-cols-4 items-center justify-center gap-x-1 gap-y-1">
             {workSuitability
               .sort((a, b) => (a.attributes.slug < b.attributes.slug ? -1 : 1))
               .map((e) => {
@@ -152,6 +155,15 @@ const SearchForm = ({
                   workSuitFilter?.findIndex(
                     (el) => el === e.attributes.slug.toLowerCase()
                   ) >= 0;
+                const modelUrl = e.attributes.icon?.data?.attributes?.url;
+                const modelImage: string = modelUrl ? isLocal(modelUrl) : '';
+                let level = e.attributes.name.toLowerCase();
+                if (level.includes(' lv')) {
+                  const nameArray = level.split(' lv');
+                  level = `Lv ${nameArray[nameArray.length - 1]}`;
+                } else {
+                  level = '';
+                }
                 return (
                   <Button
                     key={`category_filter_${e.attributes.slug}`}
@@ -164,9 +176,22 @@ const SearchForm = ({
                     style={{
                       backgroundColor: isActive ? '#306734' : '',
                       borderColor: isActive ? '#306734' : '#6b74a1',
+                      textAlign: 'center',
                     }}
+                    className="justify-center"
                   >
-                    {e.attributes.name}
+                    <Image
+                      className="mr-1 w-auto transition-all"
+                      src={modelImage}
+                      alt={`${e.attributes.name} item, Palworld`}
+                      style={{
+                        height: '20px',
+                        width: 'auto',
+                      }}
+                      width={20}
+                      height={20}
+                    />
+                    {level}
                   </Button>
                 );
               })}
@@ -174,7 +199,13 @@ const SearchForm = ({
         ) : null}
         {!hidden && (
           <div className="my-2 text-center">
-            <Button variant="outline" className="mr-2" onClick={() => clearSearch()}>Clear Filters</Button>
+            <Button
+              variant="outline"
+              className="mr-2"
+              onClick={() => clearSearch()}
+            >
+              Clear Filters
+            </Button>
             <Button type="submit">Filter</Button>
             <hr className="mt-2" />
           </div>
