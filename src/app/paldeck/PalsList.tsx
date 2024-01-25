@@ -61,16 +61,20 @@ const PalsList = ({
   };
 
   const onSubmit = (
-    e: FormEvent<HTMLFormElement>,
-    filters: { name: string; elements: Array<string>; workSuitability: any }
+    e: FormEvent<HTMLFormElement> | undefined,
+    filters: {
+      name: string;
+      elements: Array<string>;
+      workSuitability: Array<string>;
+    }
   ) => {
-    e?.preventDefault();
+    if (e?.preventDefault) e.preventDefault();
     const newPals = filterPals(filters);
     if (newPals && newPals?.length > 0) {
       setPals(newPals);
-      return;
+    } else {
+      setPals([]);
     }
-    setPals([]);
   };
 
   const clearFilters = () => {

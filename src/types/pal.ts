@@ -37,7 +37,7 @@ export type Pal = {
           name: string;
           slug: string;
           description: string;
-          iocn:IconType;
+          icon:IconType;
         }
       }>
     };

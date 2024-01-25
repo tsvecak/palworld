@@ -20,7 +20,7 @@ const SearchForm = ({
 }: {
   onSubmit: (
     // eslint-disable-next-line no-unused-vars
-    e: FormEvent<HTMLFormElement>,
+    e: FormEvent<HTMLFormElement> | undefined,
     // eslint-disable-next-line no-unused-vars
     filters: {
       name: string;
@@ -66,6 +66,11 @@ const SearchForm = ({
       }
       setElemFilter(newElementValue);
     }
+    onSubmit(undefined, {
+      name: nameFilter,
+      elements: newElementValue,
+      workSuitability: workSuitFilter,
+    });
   };
   const handleWorkSuitabilityChange = (workSuitability: string) => {
     const newWorkSuitability: Array<string> = workSuitFilter
@@ -93,6 +98,11 @@ const SearchForm = ({
       }
       setWorkSuitFilter(newWorkSuitability);
     }
+    onSubmit(undefined, {
+      name: nameFilter,
+      elements: elemFilter,
+      workSuitability: newWorkSuitability,
+    });
   };
   return (
     <>
