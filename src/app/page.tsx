@@ -1,6 +1,7 @@
 import { getRandomPals } from '@/lib/getPals';
 
 import FeaturesSection from '@/components/FeaturesSection';
+import FoodMeter from '@/components/FoodMeter';
 import Hero from '@/components/Hero';
 
 import { PalsListType } from '@/types/pal';
@@ -17,6 +18,7 @@ export default async function HomePage() {
     <main>
       <Hero randomPals={randomPals} />
       <FeaturesSection />
+      <FoodMeter foodAmount={5} />
     </main>
   );
 }

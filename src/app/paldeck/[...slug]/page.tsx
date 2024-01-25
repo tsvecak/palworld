@@ -9,6 +9,7 @@ import { isLocal } from '@/lib/utils';
 import BackButton from '@/components/buttons/BackButton';
 import Container from '@/components/Container';
 import Element from '@/components/Element';
+import FoodMeter from '@/components/FoodMeter';
 import IconNameDescription from '@/components/IconNameDescription';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
@@ -93,7 +94,7 @@ export default async function SinglePalPage({
                 <Element key={e.id} element={e} displayName={true} />
               ))}
             </div>
-            <div className="relative z-0 col-span-2 flex flex-col sm:col-span-1">
+            <div className="relative z-0 col-span-2 flex flex-col gap-1 sm:col-span-1">
               {partnerSkills?.length > 0 && (
                 <div className="my-2">
                   <h4>Partner Skill:</h4>
@@ -116,15 +117,25 @@ export default async function SinglePalPage({
                   ))}
                 </div>
               )}
+              {currentPal.attributes.foodAmount === 0 ||
+                (currentPal.attributes.foodAmount > 0 && (
+                  <div className="my-2">
+                    <FoodMeter foodAmount={currentPal.attributes.foodAmount} />
+                  </div>
+                ))}
               {itemsDrops?.length > 0 && (
                 <div className="my-2">
-                  <h4>Possible Drops:</h4>
-                  {itemsDrops?.map((i) => (
-                    <IconNameDescription
-                      key={`itemsDrops${i.id}`}
-                      item={i.attributes}
-                    />
-                  ))}
+                  <div className="mg-40px flex">
+                    <h4>Possible Drops:</h4>
+                  </div>
+                  <div className="  flex flex-col items-start gap-1">
+                    {itemsDrops?.map((i) => (
+                      <IconNameDescription
+                        key={`itemsDrops${i.id}`}
+                        item={i.attributes}
+                      />
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

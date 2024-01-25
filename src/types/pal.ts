@@ -12,6 +12,7 @@ export type Pal = {
     publishedAt: string;
     locale: string;
     number: number;
+    foodAmount: number;
     caption: string;
     description: RootNode[];
     model: {
@@ -36,7 +37,7 @@ export type Pal = {
           name: string;
           slug: string;
           description: string;
-          icon:IconType;
+          iocn:IconType;
         }
       }>
     };
@@ -82,10 +83,8 @@ export type PalElement = {
   };
 }
 export type IconType = {
-  icon: {
-    data: {
-      id: number;
-      attributes: StrapiImage;
-    };
+  data: {
+    id: number;
+    attributes: StrapiImage;
   };
 }

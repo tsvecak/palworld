@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import AdBlockModal from '@/components/AdsModal';
-
 export default function Adsterra({
   height = 250,
   width = 300,
@@ -44,7 +42,12 @@ export default function Adsterra({
 
   return (
     <div ref={banner}>
-      <AdBlockModal isOpen={hasAdBlock} setIsOpen={setHasAdBlock} />
+      {hasAdBlock && (
+        <div>
+          Paldeck uses Ads to make sure we can keep Palpagos Islands lights on.
+          Please consider disabling your adblock.
+        </div>
+      )}
     </div>
   );
 }
