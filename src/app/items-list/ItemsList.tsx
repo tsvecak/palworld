@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { FormEvent, useState } from 'react';
 
 import Adsterra from '@/components/Adsterra';
+import ItemCard from '@/components/cards/ItemCard';
 import Container from '@/components/Container';
 
 import SearchForm from '@/app/items-list/SearchForm';
 
 import { Item, ItemCategory } from '@/types/items';
-import { Pal } from '@/types/pal';
 
 export default function ItemsList({
   items,
@@ -64,58 +64,33 @@ export default function ItemsList({
 
   const listItems = (items: Array<Item>) => {
     return items.map((i) => {
-      const name = i.attributes.name;
-      const palsList = i.attributes.pals?.data;
-      const iconUrl = i.attributes.icon?.data?.attributes?.url;
-      const categories = i.attributes.item_categories?.data;
-      const sources = i.attributes.item_sources?.data;
-
       return (
-        <div key={`item_drops_${i.id}`} className="rounded border p-2">
+        <div
+          key={`item_drops_${i.id}`}
+          className="relative flex w-[120px] flex-col items-center justify-start text-center text-sm"
+        >
           <Link
             href={`/items-list/${i.attributes.slug}`}
-            className="cursor-pointer"
+            className="flex h-[120px] w-[120px] cursor-pointer items-center justify-center border bg-slate-800 p-2"
           >
-            <div className="flex w-full">
+            <div className="flex w-full flex-col items-center justify-center text-center">
               {iconUrl && (
                 <Image
                   src={iconUrl}
                   alt={name}
-                  width={50}
-                  height={50}
+                  width={80}
+                  height={80}
                   className="mr-2"
                 />
               )}
-              <b>{name}</b>
-            </div>
-            <div>
-              Category:{' '}
-              {categories && categories.length > 0
-                ? categories.map((c) => c.attributes.name).join(', ')
-                : 'Unknown'}
-            </div>
-            <div>
-              Obtained by:{' '}
-              {sources && sources.length > 0
-                ? sources.map((c) => c.attributes.name).join(', ')
-                : 'Unknown'}
+              {weight > 0 && (
+                <b className="absolute left-0 top-0 w-[40px] bg-slate-500 px-1 text-sm">
+                  {weight}
+                </b>
+              )}
             </div>
           </Link>
-          <div className="flex flex-wrap gap-1">
-            {palsList && palsList.length > 0 && 'Dropped by:'}
-            {palsList &&
-              palsList.length > 0 &&
-              palsList.map((p: Pal) => (
-                <div key={`items_pals_${p.id}`}>
-                  <Link
-                    className=" underline underline-offset-2"
-                    href={`/paldeck/${p.attributes.slug}`}
-                  >
-                    {p.attributes.name}
-                  </Link>
-                </div>
-              ))}
-          </div>
+          {name}
         </div>
       );
     });
@@ -144,8 +119,10 @@ export default function ItemsList({
             categories={categories}
           />
         </div>
-        <div className="mx-auto grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-          {listItems(itemsList)}
+        <div className="mx-auto flex w-full flex-wrap justify-center gap-4">
+          {items.map((i) => (
+            <ItemCard key={i.id} item={i} />
+          ))}
         </div>
       </Container>
     </main>
