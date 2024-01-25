@@ -1,15 +1,13 @@
 'use client';
-import Image from 'next/image';
-import Link from 'next/link';
 import { FormEvent, useState } from 'react';
 
 import Adsterra from '@/components/Adsterra';
+import ItemCard from '@/components/cards/ItemCard';
 import Container from '@/components/Container';
 
 import SearchForm from '@/app/items-list/SearchForm';
 
 import { Item, ItemCategory } from '@/types/items';
-import { Pal } from '@/types/pal';
 
 export default function ItemsList({
   items,
@@ -62,65 +60,6 @@ export default function ItemsList({
     setItemsList(items);
   };
 
-  const listItems = (items: Array<Item>) => {
-    return items.map((i) => {
-      const name = i.attributes.name;
-      const palsList = i.attributes.pals?.data;
-      const iconUrl = i.attributes.icon?.data?.attributes?.url;
-      const categories = i.attributes.item_categories?.data;
-      const sources = i.attributes.item_sources?.data;
-
-      return (
-        <div key={`item_drops_${i.id}`} className="rounded border p-2">
-          <Link
-            href={`/items-list/${i.attributes.slug}`}
-            className="cursor-pointer"
-          >
-            <div className="flex w-full">
-              {iconUrl && (
-                <Image
-                  src={iconUrl}
-                  alt={name}
-                  width={50}
-                  height={50}
-                  className="mr-2"
-                />
-              )}
-              <b>{name}</b>
-            </div>
-            <div>
-              Category:{' '}
-              {categories && categories.length > 0
-                ? categories.map((c) => c.attributes.name).join(', ')
-                : 'Unknown'}
-            </div>
-            <div>
-              Obtained by:{' '}
-              {sources && sources.length > 0
-                ? sources.map((c) => c.attributes.name).join(', ')
-                : 'Unknown'}
-            </div>
-          </Link>
-          <div className="flex flex-wrap gap-1">
-            {palsList && palsList.length > 0 && 'Dropped by:'}
-            {palsList &&
-              palsList.length > 0 &&
-              palsList.map((p: Pal) => (
-                <div key={`items_pals_${p.id}`}>
-                  <Link
-                    className=" underline underline-offset-2"
-                    href={`/paldeck/${p.attributes.slug}`}
-                  >
-                    {p.attributes.name}
-                  </Link>
-                </div>
-              ))}
-          </div>
-        </div>
-      );
-    });
-  };
-
   return (
     <main
       className="dark:bg-dark flex h-full flex-col justify-between dark:text-white"
@@ -144,8 +83,10 @@ export default function ItemsList({
             categories={categories}
           />
         </div>
-        <div className="mx-auto grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-          {listItems(itemsList)}
+        <div className="mx-auto flex w-full flex-wrap justify-center gap-4">
+          {itemsList.map((i) => (
+            <ItemCard key={i.id} item={i} />
+          ))}
         </div>
       </Container>
     </main>
