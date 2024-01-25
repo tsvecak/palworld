@@ -102,6 +102,7 @@ export default async function SinglePalPage({
                     <IconNameDescription
                       key={`partnerSkills${i.id}`}
                       item={i.attributes}
+                      noLink={true}
                     />
                   ))}
                 </div>
@@ -113,6 +114,7 @@ export default async function SinglePalPage({
                     <IconNameDescription
                       key={`workSuitabilities${i.id}`}
                       item={i.attributes}
+                      noLink={true}
                     />
                   ))}
                 </div>

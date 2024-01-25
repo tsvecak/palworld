@@ -7,6 +7,7 @@ import { IconType } from '@/types/pal';
 
 const IconNameDescription = ({
   item,
+  noLink,
 }: {
   item: {
     name: string;
@@ -14,29 +15,39 @@ const IconNameDescription = ({
     icon?: IconType;
     slug: string;
   };
+  noLink?: boolean;
 }) => {
   const modelUrl = item.icon?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
-  return (
+  const Component = () => {
+    return (
+      <div className="flex items-center underline underline-offset-2">
+        {modelUrl && (
+          <Image
+            className="mr-2 w-auto transition-all group-hover:scale-110"
+            src={modelImage}
+            alt={`${item.name} item, Palworld`}
+            style={{
+              height: '30px',
+              width: 'auto',
+            }}
+            width={30}
+            height={30}
+          />
+        )}
+
+        {item.name}
+      </div>
+    );
+  };
+  return noLink ? (
+    <Component />
+  ) : (
     <Link
       href={`/items-list/${item.slug}`}
       className="flex items-center underline underline-offset-2"
     >
-      {modelUrl && (
-        <Image
-          className="mr-2 w-auto transition-all group-hover:scale-110"
-          src={modelImage}
-          alt={`${item.name} item, Palworld`}
-          style={{
-            height: '30px',
-            width: 'auto',
-          }}
-          width={30}
-          height={30}
-        />
-      )}
-
-      {item.name}
+      <Component />
     </Link>
   );
 };
