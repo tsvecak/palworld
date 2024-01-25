@@ -9,6 +9,7 @@ import { isLocal } from '@/lib/utils';
 import BackButton from '@/components/buttons/BackButton';
 import Container from '@/components/Container';
 import Element from '@/components/Element';
+import FoodMeter from '@/components/FoodMeter';
 import IconNameDescription from '@/components/IconNameDescription';
 import PalsSpotlight from '@/components/PalsSpotlight';
 
@@ -116,15 +117,22 @@ export default async function SinglePalPage({
                   ))}
                 </div>
               )}
+              <div>
+                <FoodMeter />
+              </div>
               {itemsDrops?.length > 0 && (
                 <div className="my-2">
-                  <h4>Possible Drops:</h4>
-                  {itemsDrops?.map((i) => (
-                    <IconNameDescription
-                      key={`itemsDrops${i.id}`}
-                      item={i.attributes}
-                    />
-                  ))}
+                  <div className="mg-40px flex">
+                    <h4>Possible Drops:</h4>
+                  </div>
+                  <div className="  flex flex-col items-start gap-5">
+                    {itemsDrops?.map((i) => (
+                      <IconNameDescription
+                        key={`itemsDrops${i.id}`}
+                        item={i.attributes}
+                      />
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

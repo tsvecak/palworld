@@ -14,7 +14,7 @@ const IconNameDescription = ({
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
   return (
     <div>
-      <Link href={`/items-list/${item.slug}`}>
+      <Link href={`/items-list/${item.slug}`} className="flex items-center">
         {modelUrl && (
           <Image
             className="w-auto transition-all group-hover:scale-110"
@@ -23,7 +23,7 @@ const IconNameDescription = ({
             style={{
               height: '40px',
               width: 'auto',
-              margin: '0 auto',
+              margin: '5px auto',
             }}
             width={40}
             height={40}
