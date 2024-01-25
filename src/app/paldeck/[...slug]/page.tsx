@@ -94,7 +94,7 @@ export default async function SinglePalPage({
                 <Element key={e.id} element={e} displayName={true} />
               ))}
             </div>
-            <div className="relative z-0 col-span-2 flex flex-col sm:col-span-1">
+            <div className="relative z-0 col-span-2 flex flex-col gap-1 sm:col-span-1">
               {partnerSkills?.length > 0 && (
                 <div className="my-2">
                   <h4>Partner Skill:</h4>
@@ -117,7 +117,7 @@ export default async function SinglePalPage({
                   ))}
                 </div>
               )}
-              <div>
+              <div className="my-2">
                 <FoodMeter />
               </div>
               {itemsDrops?.length > 0 && (
@@ -125,7 +125,7 @@ export default async function SinglePalPage({
                   <div className="mg-40px flex">
                     <h4>Possible Drops:</h4>
                   </div>
-                  <div className="  flex flex-col items-start gap-5">
+                  <div className="  flex flex-col items-start gap-1">
                     {itemsDrops?.map((i) => (
                       <IconNameDescription
                         key={`itemsDrops${i.id}`}

@@ -5,12 +5,14 @@ import { isLocal } from '@/lib/utils';
 
 import ModelImage from '@/components/cards/palCard/ModelImage';
 import Element from '@/components/Element';
+import IconLevel from '@/components/IconLevel';
 
 import { Pal } from '@/types/pal';
 const PalCard = ({ pal, center }: { pal: Pal; center?: boolean }) => {
   const modelUrl = pal.attributes.model?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
   const elements = pal.attributes.elements?.data;
+  const work = pal.attributes.work_suitabilities?.data;
   const firstElement = elements?.[0];
   const bgColor1 = firstElement ? firstElement.attributes.color : '';
   const bgColor2 =
@@ -47,6 +49,14 @@ const PalCard = ({ pal, center }: { pal: Pal; center?: boolean }) => {
           {elements?.map((e) => {
             const icon = e.attributes.icon;
             return <Element element={e} key={icon.data.id} />;
+          })}
+        </div>
+        <div
+          className="absolute right-0 top-0 grid grid-cols-3 justify-end px-2 pt-2"
+          style={{ direction: 'rtl' }}
+        >
+          {work?.map((e) => {
+            return <IconLevel key={e.id} item={e.attributes} />;
           })}
         </div>
       </div>
