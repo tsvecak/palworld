@@ -12,6 +12,7 @@ export type Pal = {
     publishedAt: string;
     locale: string;
     number: number;
+    foodAmount: number;
     caption: string;
     description: RootNode[];
     model: {

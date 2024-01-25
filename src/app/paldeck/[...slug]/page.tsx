@@ -117,9 +117,12 @@ export default async function SinglePalPage({
                   ))}
                 </div>
               )}
-              <div className="my-2">
-                <FoodMeter />
-              </div>
+              {currentPal.attributes.foodAmount === 0 ||
+                (currentPal.attributes.foodAmount > 0 && (
+                  <div className="my-2">
+                    <FoodMeter foodAmount={currentPal.attributes.foodAmount} />
+                  </div>
+                ))}
               {itemsDrops?.length > 0 && (
                 <div className="my-2">
                   <div className="mg-40px flex">
