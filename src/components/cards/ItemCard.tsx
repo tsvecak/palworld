@@ -25,7 +25,7 @@ const ItemCard = ({ item }: { item: Item }) => {
       >
         <div className="flex w-full flex-col items-center justify-center text-center">
           {icon}
-          {weight > 0 && (
+          {weight === 0 || weight > 0 && (
             <b className="absolute left-0 top-0 w-[40px] bg-slate-500 px-1 text-sm">
               {weight}
             </b>
