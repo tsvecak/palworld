@@ -8,6 +8,7 @@ import { IconType } from '@/types/pal';
 const IconNameDescription = ({
   item,
   noLink,
+  showDescription = false
 }: {
   item: {
     name: string;
@@ -16,6 +17,7 @@ const IconNameDescription = ({
     slug: string;
   };
   noLink?: boolean;
+  showDescription?: boolean
 }) => {
   const modelUrl = item.icon?.data?.attributes?.url;
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
@@ -37,6 +39,7 @@ const IconNameDescription = ({
         )}
 
         {item.name}
+        {showDescription && <p>{item.description}</p>}
       </div>
     );
   };
