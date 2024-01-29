@@ -23,7 +23,7 @@ const IconNameDescription = ({
   const modelImage: string = modelUrl ? isLocal(modelUrl) : '/images/logo.png';
   const Component = () => {
     return (
-      <div className="flex items-center underline underline-offset-2">
+      <div className="flex items-center flex-wrap">
         {modelUrl && (
           <Image
             className="mr-2 w-auto transition-all group-hover:scale-110"
@@ -38,7 +38,9 @@ const IconNameDescription = ({
           />
         )}
 
-        {item.name}
+        <span className="underline underline-offset-2">
+          {item.name}
+        </span>
         {showDescription && <p>{item.description}</p>}
       </div>
     );
