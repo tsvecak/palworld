@@ -103,6 +103,7 @@ export default async function SinglePalPage({
                       key={`partnerSkills${i.id}`}
                       item={i.attributes}
                       noLink={true}
+                      showDescription={true}
                     />
                   ))}
                 </div>
