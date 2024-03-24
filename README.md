@@ -24,6 +24,12 @@ It is encouraged to use **pnpm** so the husky hooks can work properly.
 pnpm install
 ```
 
+### 2. Setup ENV to point to your local strapi instance(you can find and clone StrapiCMS project here - [Paldeck Strapi](https://github.com/tsvecak/paldeck-strapi)
+```
+  STRAPI_URL=http://127.0.0.1:1337
+```
+Note that you will have to add content to Pals List at the minimun, but would highly suggest adding one of each collection to have it running locally.
+
 ### 3. Run the development server
 
 You can start the server using this command:
@@ -32,7 +38,7 @@ You can start the server using this command:
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `src/pages/index.tsx`.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Project Preview
 ![image](https://github.com/tsvecak/palworld/assets/10183602/0594d165-f59d-4fb0-8655-7565ecb3dfd8)
