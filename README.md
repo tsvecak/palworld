@@ -33,3 +33,9 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `src/pages/index.tsx`.
+
+### Project Preview
+![image](https://github.com/tsvecak/palworld/assets/10183602/0594d165-f59d-4fb0-8655-7565ecb3dfd8)
+![image](https://github.com/tsvecak/palworld/assets/10183602/527b95a6-58cf-440a-b14a-2b278bfebcd8)
+![image](https://github.com/tsvecak/palworld/assets/10183602/62ff183d-80ff-433d-bbcb-29b49eb9e49a)
+![image](https://github.com/tsvecak/palworld/assets/10183602/290d3a89-174a-4b77-a6ec-18965c54174a)
